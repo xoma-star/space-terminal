@@ -1,0 +1,29 @@
+.button {
+    box-sizing: border-box;
+    border: none;
+    color: transparent;
+    text-shadow: 0 0 var(--text-color);
+    background: var(--surface);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    border-radius: 0;
+    line-height: 23px;
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 12px;
+    cursor: default;
+}
+
+.button:not(:disabled):active {
+    box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
+    text-shadow: 1px 1px var(--text-color);
+}
+
+.button:focus {
+    outline: 1px dotted #000000;
+    outline-offset: -4px;
+}
+
+.button:disabled {
+    color: var(--button-shadow);
+    text-shadow: 1px 1px 0 var(--button-highlight);
+}

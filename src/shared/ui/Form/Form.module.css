@@ -1,0 +1,17 @@
+.form {
+    grid-template-columns: auto 1fr;
+}
+
+.formRow {
+
+}
+
+.formRow .label {
+
+}
+
+.formRow .caption {
+    font-size: 10px;
+    color: #808080;
+    text-indent: 12px;
+}

@@ -1,0 +1,12 @@
+.small {
+    font-size: 12px;
+}
+
+.medium {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.large {
+    font-size: 22px;
+}

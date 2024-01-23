@@ -1,0 +1,7 @@
+.input {
+    line-height: 2;
+    height: 22px;
+    background-color: #fff;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    padding: 3px 4px;
+}

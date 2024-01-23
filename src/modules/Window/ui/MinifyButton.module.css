@@ -1,0 +1,12 @@
+.button {
+    background-image: url('/icons/minimize.svg');
+    background-position: bottom 3px left 4px;
+    background-repeat: no-repeat;
+    min-height: 14px;
+    min-width: 16px;
+    padding: 0;
+}
+
+.button:focus {
+    outline: none;
+}

@@ -1,7 +1,13 @@
+import {Desktop} from './modules/Desktop';
+import WindowsContainer from './modules/Window/ui/WindowsContainer.tsx';
+import Taskbar from './modules/Taskbar/ui/Taskbar.tsx';
+
 export default function App() {
-    return (
-        <button className="bg-container text-container-contrast shadow-default">
-            Привет
-        </button>
-    )
+  return (
+    <>
+      <Desktop />
+      <WindowsContainer />
+      <Taskbar />
+    </>
+  );
 }

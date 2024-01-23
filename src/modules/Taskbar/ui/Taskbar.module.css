@@ -1,0 +1,12 @@
+.taskbar {
+    background-color: var(--button-face);
+    outline: 1px solid #ffffff;
+    height: 28px;
+}
+
+.taskbar .button.active {
+    font-weight: bold;
+    border-color: var(--button-shadow) var(--button-highlight) var(--button-highlight) var(--button-shadow);
+    background: var(--checker) repeat;
+    border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cpath d='M0 0h224v32H32v192H0V0z'/%3E%3Cpath d='M224 0h32v256H0v-32h224V0z' fill='%23FFF'/%3E%3Cpath d='M32 32h160v32H64v128H32V32z' fill='gray'/%3E%3Cpath d='M192 32h32v192H32v-32h160V32z' fill='%23DFDFDF'/%3E%3Cpath d='M64 64h128v128H64V64z' fill='silver'/%3E%3C/svg%3E") 64 /2px;
+}

@@ -1,0 +1,19 @@
+.star {
+    background-color: var(--star-color);
+    box-shadow: var(--star-color) 0 0 5px 1px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.blackHole {
+    background-color: #000;
+    box-shadow: #7373dc -2px 3px 5px 1px;
+    animation: spin 5s linear infinite;
+}
