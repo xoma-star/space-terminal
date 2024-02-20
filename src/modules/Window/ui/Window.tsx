@@ -11,7 +11,7 @@ interface WindowProps {
     active: boolean;
     minified: boolean;
     style: CSSProperties;
-    bodyContent: ReactNode;
+    children: ReactNode;
 }
 
 export default function Window(props: WindowProps) {
@@ -20,7 +20,7 @@ export default function Window(props: WindowProps) {
     active,
     minified,
     style,
-    bodyContent
+    children
   } = props;
   const {
     icon,
@@ -41,8 +41,8 @@ export default function Window(props: WindowProps) {
           <CloseButton onClick={() => closeWindow(app)} />
         </div>
       </div>
-      <div className={classNames(css.body, 'overflow-auto')}>
-        {bodyContent}
+      <div className={classNames(css.body, 'overflow-auto relative')}>
+        {children}
       </div>
     </div>
   );

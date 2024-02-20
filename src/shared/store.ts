@@ -25,7 +25,7 @@ interface Store {
 
 const useStore = create<Store>((setState, getState) => ({
   activeWindow: null,
-  windows: [{application: Application.MAP, zIndex: 1, minified: false}],
+  windows: [{application: Application.TERMINAL, zIndex: 1, minified: false}],
   setActiveWindow(payload: Application | null) {
     setState({activeWindow: payload});
   },

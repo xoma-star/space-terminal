@@ -18,7 +18,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, {extensions: ['.ts', '.tsx']}],
     'import/no-unresolved': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 'off',
     'object-curly-spacing': ['error', 'never'],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'error',

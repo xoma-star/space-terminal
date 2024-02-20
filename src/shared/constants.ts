@@ -53,31 +53,31 @@ export enum StarSpectralClass {
 export const STAR_COLOR_BY_SPECTRAL_CLASS: Record<StarSpectralClass, {color: string, hex: string}> = {
   [StarSpectralClass.O]: {
     color: 'Голубой',
-    hex: '#E7ECFE'
+    hex: '#7d9aff'
   },
   [StarSpectralClass.B]: {
     color: 'Бело-голубой',
-    hex: '#F5F7FF'
+    hex: '#ccd1ff'
   },
   [StarSpectralClass.A]: {
     color: 'Белый',
-    hex: '#FEFEFE'
+    hex: '#ffffff'
   },
   [StarSpectralClass.F]: {
     color: 'Желто-белый',
-    hex: '#FFFBE5'
+    hex: '#fce9a8'
   },
   [StarSpectralClass.G]: {
     color: 'Желтый',
-    hex: '#fff4e8'
+    hex: '#ffe264'
   },
   [StarSpectralClass.K]: {
     color: 'Оранжевый',
-    hex: '#FFF3BD'
+    hex: '#ffc164'
   },
   [StarSpectralClass.M]: {
     color: 'Красный',
-    hex: '#FFA38A'
+    hex: '#ff8767'
   }
 };
 
@@ -115,8 +115,8 @@ export const StarLuminosityClassName: Record<StarLuminosityClass, string> = {
  */
 export enum StarType {
   STAR = 'star',
-  BLACK_HOLE = 'black-hole',
-  NEUTRON_STAR = 'neutron-star',
+  BLACK_HOLE = 'black_hole',
+  NEUTRON_STAR = 'neutron_star',
   WORMHOLE = 'wormhole'
 }
 
@@ -172,14 +172,14 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
   luminosityClasses: Partial<Record<StarLuminosityClass, number>>
 }> = {
   [StarSpectralClass.O]: {
-    frequency: 0.0078125,
+    frequency: 0.05385,
     luminosityClasses: {
       [StarLuminosityClass.III]: 0.34,
       [StarLuminosityClass.V]: 0.66
     }
   },
   [StarSpectralClass.B]: {
-    frequency: 0.015625,
+    frequency: 0.12,
     luminosityClasses: {
       [StarLuminosityClass.I]: 0.007,
       [StarLuminosityClass.II]: 0.076,
@@ -188,7 +188,7 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
     }
   },
   [StarSpectralClass.A]: {
-    frequency: 0.03125,
+    frequency: 0.16,
     luminosityClasses: {
       [StarLuminosityClass.III]: 0.16,
       [StarLuminosityClass.IV]: 0.16,
@@ -196,7 +196,7 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
     }
   },
   [StarSpectralClass.F]: {
-    frequency: 0.0625,
+    frequency: 0.20,
     luminosityClasses: {
       [StarLuminosityClass.II]: 0.07,
       [StarLuminosityClass.III]: 0.17,
@@ -205,7 +205,7 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
     }
   },
   [StarSpectralClass.G]: {
-    frequency: 0.125,
+    frequency: 0.26,
     luminosityClasses: {
       [StarLuminosityClass.II]: 0.013,
       [StarLuminosityClass.III]: 0.131,
@@ -214,7 +214,7 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
     }
   },
   [StarSpectralClass.K]: {
-    frequency: 0.25,
+    frequency: 0.34615,
     luminosityClasses: {
       [StarLuminosityClass.II]: 0.008,
       [StarLuminosityClass.III]: 0.082,
@@ -223,7 +223,7 @@ export const STARS_DISTRIBUTION: Record<StarSpectralClass, {
     }
   },
   [StarSpectralClass.M]: {
-    frequency: 0.5,
+    frequency: 0.45,
     luminosityClasses: {
       [StarLuminosityClass.III]: 0.004,
       [StarLuminosityClass.IV]: 0.001,
@@ -304,7 +304,48 @@ export enum RawResource {
   SULPHUR = 'sulphur',
   PHOSPHORUS = 'phosphorus',
   NICKEL = 'nickel',
-  SILVER = 'silver'
+  SILVER = 'silver',
+  LITHIUM = 'lithium',
+  BERYLLIUM = 'beryllium',
+  SODIUM = 'sodium',
+  MAGNESIUM = 'magnesium',
+  POTASSIUM = 'potassium',
+  CALCIUM = 'calcium',
+  RUBIDIUM = 'rubidium',
+  STRONTIUM = 'strontium',
+  CAESIUM = 'caesium',
+  RADIUM = 'radium',
+  FRANCIUM = 'francium',
+  SCANDIUM = 'scandium',
+  YTTRIUM = 'yttrium',
+  LUTETIUM = 'lutetium',
+  LAWRENCIUM = 'lawrencium',
+  ZIRCONIUM = 'zirconium',
+  VANADIUM = 'vanadium',
+  NIOBIUM = 'niobium',
+  CHROMIUM = 'chromium',
+  MANGANESE = 'manganese',
+  COBALT = 'cobalt',
+  ZINC = 'zinc',
+  PALLADIUM = 'palladium',
+  IRIDIUM = 'iridium',
+  CADMIUM = 'cadmium',
+  MERCURY = 'mercury',
+  OSMIUM = 'osmium',
+  BORON = 'boron',
+  FLUORINE = 'fluorine',
+  NEON = 'neon',
+  CHLORINE = 'chlorine',
+  ARGON = 'argon',
+  LEAD = 'lead',
+  BISMUTH = 'bismuth',
+  KRYPTON = 'krypton',
+  SELENIUM = 'selenium',
+  TIN = 'tin',
+  INDIUM = 'indium',
+  IODINE = 'iodine',
+  XENON = 'xenon',
+  THORIUM = 'thorium'
 }
 
 export const RawResourceName: Record<RawResource, string> = {
@@ -327,6 +368,28 @@ export const RawResourceName: Record<RawResource, string> = {
   [RawResource.PHOSPHORUS]: 'Фосфор',
   [RawResource.NICKEL]: 'Никель',
   [RawResource.SILVER]: 'Серебро'
+};
+
+export const RAW_RESOURCE_RARITY: Record<RawResource, number> = {
+  [RawResource.ALUMINIUM]: 1,
+  [RawResource.CARBON]: 1,
+  [RawResource.AMMONIA]: 0.7,
+  [RawResource.COPPER]: 0.5,
+  [RawResource.GOLD]: 0.3,
+  [RawResource.HELIUM]: 0.9,
+  [RawResource.HYDROGEN]: 1,
+  [RawResource.IRON]: 0.8,
+  [RawResource.METHANE]: 0.4,
+  [RawResource.NICKEL]: 0.5,
+  [RawResource.NITROGEN]: 0.8,
+  [RawResource.OXYGEN]: 0.7,
+  [RawResource.PHOSPHORUS]: 0.3,
+  [RawResource.SILICON]: 1,
+  [RawResource.SILVER]: 0.5,
+  [RawResource.SULPHUR]: 0.5,
+  [RawResource.TITANIUM]: 0.3,
+  [RawResource.URANIUM]: 0.4,
+  [RawResource.WATER]: 1
 };
 
 export enum ComponentResource {
@@ -414,3 +477,12 @@ export const CRAFT_REQUIREMENTS: CraftRequirements = {
     [RawResource.ALUMINIUM]: 1
   }
 };
+
+/** базовая вероятность возникновения звездной системы */
+export const BASE_SYSTEM_APPEAR_PROBABILITY = 0.1;
+
+/** размер чанка вселенной */
+export const CHUNK_SIZE = 32;
+
+/** максимальная глубина чанка (кол-во знаков в координатах) */
+export const MAX_CHUNK_DEPTH = 5;

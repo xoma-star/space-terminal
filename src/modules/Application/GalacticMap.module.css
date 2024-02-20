@@ -1,0 +1,12 @@
+.map {
+    width: 3200px;
+    height: 3200px;
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(32, 1fr);
+    background-image: url("/stars.svg");
+}
+
+.planets {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}

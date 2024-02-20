@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'container': 'var(--bg-primary)',
+        container: 'var(--surface)',
         'container-contrast': 'var(--text-primary)'
       },
       boxShadow: {
