@@ -53,3 +53,5 @@ export interface NeutronStarSystemData {
 
 export type SystemData = (StarSystemData | BlackHoleSystemData | NeutronStarSystemData)
   & BaseSystemData;
+
+export type Chunk = `${string}:${string}`;
