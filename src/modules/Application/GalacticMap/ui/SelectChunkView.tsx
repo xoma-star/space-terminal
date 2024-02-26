@@ -13,17 +13,19 @@ interface SelectChunkViewProps {
 export default function SelectChunkView(props: SelectChunkViewProps) {
   const {chunk, setChunk} = props;
   const chunks = generateGalacticChunk(chunk);
-  const {buttonsRef} = useChunkSelector(chunk);
+  const {buttonsRef, selectChunkHandler} = useChunkSelector(chunk, setChunk);
 
   return (
     <>
       {chunks.map((x: Chunk) => (
         <button
           key={x}
-          ref={(ref) => buttonsRef.current[x] = ref}
+          ref={(ref) => {
+            buttonsRef.current[x] = ref;
+          }}
           type="button"
           className="bg-transparent border-2 border-gray-400 text-gray-400 focus:bg-gray-400 focus:text-black"
-          onClick={() => setChunk(x)}
+          onClick={() => selectChunkHandler(x)}
         >
           {x}
         </button>

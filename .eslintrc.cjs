@@ -21,12 +21,13 @@ module.exports = {
     'linebreak-style': 'off',
     'object-curly-spacing': ['error', 'never'],
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-shadow': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'eol-last': ['error', 'never'],
     'comma-dangle': ['error', 'never'],
     'react/require-default-props': 'off',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'consistent-return': 'off'
   },
 }

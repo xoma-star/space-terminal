@@ -66,9 +66,8 @@ const useStore = create<Store>((setState, getState) => ({
   minifyWindow(payload: Application) {
     setState({
       windows: getState().windows.map((x) => ({
-        minified: x.application === payload ? true : x.minified,
-        application: x.application,
-        zIndex: x.zIndex
+        ...x,
+        minified: x.application === payload ? true : x.minified
       })),
       activeWindow: null
     });
@@ -80,13 +79,11 @@ const useStore = create<Store>((setState, getState) => ({
       : acc), 0);
 
     setState({
-      windows: windows.map((x) => {
-        return {
-          minified: x.application === payload ? false : x.minified,
-          application: x.application,
-          zIndex: x.application === payload ? maxZIndex + 1 : x.zIndex
-        };
-      }),
+      windows: windows.map((x) => ({
+        minified: x.application === payload ? false : x.minified,
+        application: x.application,
+        zIndex: x.application === payload ? maxZIndex + 1 : x.zIndex
+      })),
       activeWindow: payload
     });
   }

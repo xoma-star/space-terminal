@@ -1,4 +1,4 @@
-import {CSSProperties, ReactNode} from 'react';
+import {CSSProperties, MouseEvent, ReactNode} from 'react';
 import css from './Window.module.css';
 import classNames from '../../../shared/lib/classNames.ts';
 import MinifyButton from './MinifyButton.tsx';
@@ -29,6 +29,11 @@ export default function Window(props: WindowProps) {
 
   const {closeWindow, minifyWindow, setActiveWindow} = useStore();
 
+  const minifyHandler = (e: MouseEvent) => {
+    e.stopPropagation();
+    minifyWindow(app);
+  };
+
   return (
     <div className={classNames(css.container, 'absolute duration-100', minified && css.minified)} style={style} onClick={() => setActiveWindow(app)}>
       <div className={classNames(css.header, 'flex justify-between items-center mb-2', active && css.active)}>
@@ -37,7 +42,7 @@ export default function Window(props: WindowProps) {
           <span>{name}</span>
         </div>
         <div className={classNames(css.controls, 'flex gap-1 ml-4')}>
-          <MinifyButton onClick={() => minifyWindow(app)} />
+          <MinifyButton onClick={minifyHandler} />
           <CloseButton onClick={() => closeWindow(app)} />
         </div>
       </div>
