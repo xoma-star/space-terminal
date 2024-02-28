@@ -1,5 +1,5 @@
 import {InputHTMLAttributes, ReactNode} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 import css from './Range.module.css';
 
 interface RangeProps extends InputHTMLAttributes<HTMLInputElement> {

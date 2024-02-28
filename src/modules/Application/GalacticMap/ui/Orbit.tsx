@@ -1,5 +1,5 @@
 import css from './Star.module.css';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface Props {
   radius: number;
@@ -13,7 +13,11 @@ function Orbit(props: Props) {
   return (
     <div
       className={classNames(css.orbit, 'rounded-full absolute flex items-end justify-center')}
-      style={{width: ORBIT_SIZES[radius], height: ORBIT_SIZES[radius], animationDuration: `${(Math.floor((Math.random() + 1) * 5)) * 5}s`}}
+      style={{
+        width: ORBIT_SIZES[radius],
+        height: ORBIT_SIZES[radius],
+        animationDuration: `${(Math.floor((Math.random() + 1) * 5)) * 5}s`
+      }}
     >
       <div className="w-32 h-32 bg-amber-600 rounded-full -mb-16" />
     </div>

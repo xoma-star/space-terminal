@@ -1,10 +1,10 @@
-import useStore from '@/shared/store.ts';
-import Window from './Window.tsx';
-import GalacticMap from '../../Application/GalacticMap.tsx';
-import {Application} from '@/shared/constants.ts';
+import useStore from '@/shared/store';
+import Window from './Window';
+import GalacticMap from '../../Application/GalacticMap';
+import {Application} from '@/shared/constants';
 import {ReactNode} from 'react';
-import Welcome from '../../Application/Welcome.tsx';
-import Terminal from '../../Application/Terminal.tsx';
+import Welcome from '../../Application/Welcome';
+import Terminal from '../../Application/Terminal';
 
 const APPLICATION_CONTENT: Record<Application, ReactNode> = {
   [Application.WELCOME]: <Welcome />,

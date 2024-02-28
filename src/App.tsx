@@ -1,6 +1,6 @@
 import {Desktop} from './modules/Desktop';
-import WindowsContainer from './modules/Window/ui/WindowsContainer.tsx';
-import Taskbar from './modules/Taskbar/ui/Taskbar.tsx';
+import WindowsContainer from './modules/Window/ui/WindowsContainer';
+import Taskbar from './modules/Taskbar/ui/Taskbar';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 
 const client = new ApolloClient({

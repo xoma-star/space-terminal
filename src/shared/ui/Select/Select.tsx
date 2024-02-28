@@ -1,8 +1,9 @@
 import {HTMLAttributes} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 import css from './Select.module.css';
 
-interface SelectProps extends HTMLAttributes<HTMLSelectElement> {}
+interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
+}
 
 function Select(props: SelectProps) {
   const {

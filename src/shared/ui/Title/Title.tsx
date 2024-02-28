@@ -1,6 +1,6 @@
 import {HTMLAttributes} from 'react';
 import css from './Title.module.css';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
   children: string;

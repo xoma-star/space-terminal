@@ -1,4 +1,4 @@
-import {ApplicationData, BiomeData} from './types.ts';
+import {ApplicationData, BiomeData} from './types';
 
 /** список приложений */
 export enum Application {
@@ -50,7 +50,7 @@ export enum StarSpectralClass {
 }
 
 /** цвета по спектральному классу */
-export const STAR_COLOR_BY_SPECTRAL_CLASS: Record<StarSpectralClass, {color: string, hex: string}> = {
+export const STAR_COLOR_BY_SPECTRAL_CLASS: Record<StarSpectralClass, { color: string, hex: string }> = {
   [StarSpectralClass.O]: {
     color: 'Голубой',
     hex: '#7d9aff'

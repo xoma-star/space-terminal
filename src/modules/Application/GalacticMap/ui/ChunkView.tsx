@@ -24,27 +24,30 @@ export default function ChunkView(props: ChunkViewProps) {
           return (<div key={item} />);
         }
         switch (systemData.starType) {
-          case StarType.STAR: return (
-            <Star
-              onClick={() => setChunk(item)}
-              key={item}
-              luminosityClass={systemData.luminosityClass}
-              spectralClass={systemData.spectralClass}
-            />
-          );
-          case StarType.BLACK_HOLE: return (
-            <BlackHole
-              key={item}
-              blackHoleType={systemData.blackHoleType}
-              onClick={() => setChunk(item)}
-            />
-          );
-          case StarType.NEUTRON_STAR: return (
-            <NeutronStar
-              key={item}
-              onClick={() => setChunk(item)}
-            />
-          );
+          case StarType.STAR:
+            return (
+              <Star
+                onClick={() => setChunk(item)}
+                key={item}
+                luminosityClass={systemData.luminosityClass}
+                spectralClass={systemData.spectralClass}
+              />
+            );
+          case StarType.BLACK_HOLE:
+            return (
+              <BlackHole
+                key={item}
+                blackHoleType={systemData.blackHoleType}
+                onClick={() => setChunk(item)}
+              />
+            );
+          case StarType.NEUTRON_STAR:
+            return (
+              <NeutronStar
+                key={item}
+                onClick={() => setChunk(item)}
+              />
+            );
         }
       })}
     </>

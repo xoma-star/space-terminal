@@ -1,11 +1,11 @@
-import Input from '@/shared/ui/Input/Input.tsx';
-import Form from '@/shared/ui/Form/Form.tsx';
-import FormRow from '@/shared/ui/Form/FormRow.tsx';
+import Input from '@/shared/ui/Input/Input';
+import Form from '@/shared/ui/Form/Form';
+import FormRow from '@/shared/ui/Form/FormRow';
 import {useId} from 'react';
-import Select from '@/shared/ui/Select/Select.tsx';
-import Option from '@/shared/ui/Select/Option.tsx';
-import Range from '@/shared/ui/Range/Range.tsx';
-import Button from '@/shared/ui/Button/Button.tsx';
+import Select from '@/shared/ui/Select/Select';
+import Option from '@/shared/ui/Select/Option';
+import Range from '@/shared/ui/Range/Range';
+import Button from '@/shared/ui/Button/Button';
 
 function SignupForm(props) {
   const orgNameId = useId();

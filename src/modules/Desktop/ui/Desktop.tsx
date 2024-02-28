@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import DesktopIcon from './DesktopIcon.tsx';
-import {Application, APPLICATION_DATA} from '@/shared/constants.ts';
-import useStore from '@/shared/store.ts';
+import DesktopIcon from './DesktopIcon';
+import {Application, APPLICATION_DATA} from '@/shared/constants';
+import useStore from '@/shared/store';
 
 export default function Desktop() {
   const [selectedApp, setSelectedApp] = useState<null | Application>(null);

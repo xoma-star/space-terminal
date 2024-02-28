@@ -11,10 +11,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, {extensions: ['.ts', '.tsx']}],
     'import/no-unresolved': 'off',
@@ -28,6 +25,9 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'consistent-return': 'off'
+    'consistent-return': 'off',
+    'import/extensions': ['warn', 'never'],
+    'import/order': 'off',
+    'no-plusplus': 'off'
   },
 }

@@ -1,11 +1,6 @@
 import css from './Star.module.css';
-import {
-  STAR_COLOR_BY_SPECTRAL_CLASS,
-  StarLuminosityClass,
-  StarSpectralClass,
-  StarType
-} from '@/shared/constants.ts';
-import BaseStar from './BaseStar.tsx';
+import {STAR_COLOR_BY_SPECTRAL_CLASS, StarLuminosityClass, StarSpectralClass} from '@/shared/constants';
+import BaseStar from './BaseStar';
 
 export interface BaseProps {
   onClick(): void;

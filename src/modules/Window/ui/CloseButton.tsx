@@ -1,4 +1,4 @@
-import Button, {ButtonProps} from '../../../shared/ui/Button/Button.tsx';
+import Button, {ButtonProps} from '../../../shared/ui/Button/Button';
 import css from './CloseButton.module.css';
 
 function CloseButton(props: ButtonProps) {

@@ -1,6 +1,6 @@
-import Title from '@/shared/ui/Title/Title.tsx';
-import Paragraph from '@/shared/ui/Paragraph/Paragraph.tsx';
-import Button from '@/shared/ui/Button/Button.tsx';
+import Title from '@/shared/ui/Title/Title';
+import Paragraph from '@/shared/ui/Paragraph/Paragraph';
+import Button from '@/shared/ui/Button/Button';
 
 interface Props {
   changeStep(): void;

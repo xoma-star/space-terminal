@@ -1,4 +1,4 @@
-import {CHUNK_SIZE} from '@/shared/constants.ts';
+import {CHUNK_SIZE} from '@/shared/constants';
 
 function parseChunk(value: number): string {
   return value.toString(CHUNK_SIZE);

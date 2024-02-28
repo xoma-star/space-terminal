@@ -1,11 +1,11 @@
 import {ButtonHTMLAttributes, CSSProperties} from 'react';
 import css from './DesktopIcon.module.css';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface IconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    caption: string;
-    img: string;
-    selected: boolean;
+  caption: string;
+  img: string;
+  selected: boolean;
 }
 
 export default function DesktopIcon(props: IconProps) {

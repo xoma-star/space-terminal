@@ -1,6 +1,6 @@
 import css from './Form.module.css';
 import {cloneElement, ReactElement} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface BaseFormRowProps {
   children: ReactElement;

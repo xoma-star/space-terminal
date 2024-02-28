@@ -1,5 +1,5 @@
-import {BaseProps} from './Star.tsx';
-import BaseStar from './BaseStar.tsx';
+import {BaseProps} from './Star';
+import BaseStar from './BaseStar';
 import css from './Star.module.css';
 
 function NeutronStar(props: BaseProps) {

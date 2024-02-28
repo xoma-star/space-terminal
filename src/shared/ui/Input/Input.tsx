@@ -1,6 +1,6 @@
 import {InputHTMLAttributes} from 'react';
 import css from './Input.module.css';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'text' | 'password' | 'number';

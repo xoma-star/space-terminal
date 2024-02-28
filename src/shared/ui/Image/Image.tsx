@@ -1,5 +1,5 @@
 import {ImgHTMLAttributes} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 

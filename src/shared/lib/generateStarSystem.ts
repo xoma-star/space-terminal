@@ -1,4 +1,4 @@
-import {weightRandom} from '@/shared/lib/pseudoRandom.ts';
+import {weightRandom} from '@/shared/lib/pseudoRandom';
 import {
   BASE_SYSTEM_APPEAR_PROBABILITY,
   BLACK_HOLE_TYPE_FREQUENCY,
@@ -7,9 +7,9 @@ import {
   STARS_DISTRIBUTION,
   StarSpectralClass,
   StarType
-} from '@/shared/constants.ts';
+} from '@/shared/constants';
 import seedrandom from 'seedrandom';
-import {BlackHoleSystemData, StarSystemData, SystemData} from '@/shared/types.ts';
+import {BlackHoleSystemData, StarSystemData, SystemData} from '@/shared/types';
 
 // Список слогов.
 const SYLLABLES = ['ra', 'ta', 'ni', 'ha', 'ku', 'mi', 'fu', 'zi', 'la', 'te', 'si', 'va', 'pe', 'do', 'gi', 'ke', 'lu', 'po', 'ri', 'so', 'qu', 'le', 've', 'co', 'ma', 'pa', 'ne', 'di', 'tu', 'mo', 'cha', 'be', 'na', 'me', 'sa', 'ka', 'lo', 'de', 'fi', 'ze'];
@@ -93,8 +93,11 @@ export default function generateSystem(seed: string): SystemData | null {
   };
 
   switch (starType) {
-    case StarType.STAR: return {...baseProperties, ...generateStarSystem(seed)};
-    case StarType.BLACK_HOLE: return {...baseProperties, ...generateBlackHoleSystem(seed)};
-    default: return null;
+    case StarType.STAR:
+      return {...baseProperties, ...generateStarSystem(seed)};
+    case StarType.BLACK_HOLE:
+      return {...baseProperties, ...generateBlackHoleSystem(seed)};
+    default:
+      return null;
   }
 }

@@ -1,5 +1,5 @@
 import {FormEvent, HTMLAttributes, ReactNode} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 import css from './Form.module.css';
 
 interface FormProps extends HTMLAttributes<HTMLFormElement> {

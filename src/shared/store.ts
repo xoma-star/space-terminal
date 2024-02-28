@@ -1,5 +1,5 @@
 import {create} from 'zustand';
-import {Application} from '@/shared/constants.ts';
+import {Application} from '@/shared/constants';
 
 interface Store {
   /** активное окно */
@@ -13,13 +13,18 @@ interface Store {
     /** z-index */
     zIndex: number;
   }[];
+
   /** установить активное окно */
   setActiveWindow(payload: Application | null): void;
+
   /** открыть приложение */
   openWindow(payload: Application): void;
+
   /** закрыть приложение */
   closeWindow(payload: Application): void;
+
   minifyWindow(payload: Application): void;
+
   restoreWindow(payload: Application): void;
 }
 

@@ -1,7 +1,7 @@
 import {memo, useState} from 'react';
 import css from './GalacticMap.module.css';
-import classNames from '@/shared/lib/classNames.ts';
-import {MAX_CHUNK_DEPTH} from '@/shared/constants.ts';
+import classNames from '@/shared/lib/classNames';
+import {MAX_CHUNK_DEPTH} from '@/shared/constants';
 import StarSystemView from './GalacticMap/ui/StarSystemView';
 import {Chunk} from '@/shared/types';
 import ChunkView from './GalacticMap/ui/ChunkView';

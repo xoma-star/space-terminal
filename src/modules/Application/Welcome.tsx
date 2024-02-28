@@ -1,7 +1,7 @@
 import {useState} from 'react';
-import Startup from './Welcome/Startup.tsx';
-import SignupForm from './Welcome/SignupForm.tsx';
-import Image from '@/shared/ui/Image/Image.tsx';
+import Startup from './Welcome/Startup';
+import SignupForm from './Welcome/SignupForm';
+import Image from '@/shared/ui/Image/Image';
 
 function Welcome() {
   const [step, setStep] = useState(0);

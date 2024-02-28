@@ -1,10 +1,10 @@
 import {ButtonHTMLAttributes, ReactNode} from 'react';
 import css from './Button.module.css';
-import classNames from '../../lib/classNames.ts';
+import classNames from '../../lib/classNames';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    before?: ReactNode;
-    after?: ReactNode;
+  before?: ReactNode;
+  after?: ReactNode;
 }
 
 export default function Button(props: ButtonProps) {

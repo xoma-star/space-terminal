@@ -36,11 +36,16 @@ export default function useChunkSelector(chunk: Chunk | null, setChunk: (chunk: 
       // если chunk null - значит на верхнем уровне, тогда можно поставить 0:0
       const parsedChunk = (focusedChunk ?? '0:0').split(':');
       switch (e.key) {
-        case 'ArrowRight': return focusChunk(`${parsedChunk[0]}:${addOne(parsedChunk[1])}`);
-        case 'ArrowLeft': return focusChunk(`${parsedChunk[0]}:${addOne(parsedChunk[1], true)}`);
-        case 'ArrowUp': return focusChunk(`${addOne(parsedChunk[0], true)}:${parsedChunk[1]}`);
-        case 'ArrowDown': return focusChunk(`${addOne(parsedChunk[0])}:${parsedChunk[1]}`);
-        case 'Escape': return selectChunkHandler(parsedChunk.map(x => x.slice(0, -2)).join(':'), true);
+        case 'ArrowRight':
+          return focusChunk(`${parsedChunk[0]}:${addOne(parsedChunk[1])}`);
+        case 'ArrowLeft':
+          return focusChunk(`${parsedChunk[0]}:${addOne(parsedChunk[1], true)}`);
+        case 'ArrowUp':
+          return focusChunk(`${addOne(parsedChunk[0], true)}:${parsedChunk[1]}`);
+        case 'ArrowDown':
+          return focusChunk(`${addOne(parsedChunk[0])}:${parsedChunk[1]}`);
+        case 'Escape':
+          return selectChunkHandler(parsedChunk.map(x => x.slice(0, -2)).join(':'), true);
         default:
       }
     };

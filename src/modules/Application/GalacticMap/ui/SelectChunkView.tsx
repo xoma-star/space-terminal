@@ -4,6 +4,7 @@ import useChunkSelector from './SelectChunkView/lib/hooks/useChunkSelector';
 
 interface SelectChunkViewProps {
   chunk: Chunk | null;
+
   setChunk(chunk: Chunk): void;
 }
 

@@ -1,6 +1,6 @@
-import {BlackHoleType, StarType} from '@/shared/constants.ts';
-import {BaseProps} from './Star.tsx';
-import BaseStar from './BaseStar.tsx';
+import {BlackHoleType} from '@/shared/constants';
+import {BaseProps} from './Star';
+import BaseStar from './BaseStar';
 import css from './Star.module.css';
 
 const BLACK_HOLE_SIZE: Record<BlackHoleType, number> = {

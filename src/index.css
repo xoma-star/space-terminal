@@ -95,6 +95,7 @@
 ::-webkit-scrollbar {
     width: 16px;
 }
+
 ::-webkit-scrollbar:horizontal {
     height: 17px;
 }
@@ -123,14 +124,17 @@
     height: 17px;
     background-image: url("./icons/button-up.svg");
 }
+
 ::-webkit-scrollbar-button:vertical:end {
     height: 17px;
     background-image: url("./icons/button-down.svg");
 }
+
 ::-webkit-scrollbar-button:horizontal:start {
     width: 16px;
     background-image: url("./icons/button-left.svg");
 }
+
 ::-webkit-scrollbar-button:horizontal:end {
     width: 16px;
     background-image: url("./icons/button-right.svg");

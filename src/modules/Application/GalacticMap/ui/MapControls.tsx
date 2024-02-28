@@ -8,6 +8,7 @@ import {ChangeEvent, Dispatch, FormEvent, SetStateAction, useId, useState} from 
 
 interface MapControlsProps {
   chunk: Chunk | null;
+
   setChunk(chunk: Dispatch<SetStateAction<Chunk | null>>): void;
 }
 

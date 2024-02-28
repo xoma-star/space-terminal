@@ -1,17 +1,17 @@
 import {CSSProperties, MouseEvent, ReactNode} from 'react';
 import css from './Window.module.css';
-import classNames from '../../../shared/lib/classNames.ts';
-import MinifyButton from './MinifyButton.tsx';
-import CloseButton from './CloseButton.tsx';
-import {Application, APPLICATION_DATA} from '@/shared/constants.ts';
-import useStore from '@/shared/store.ts';
+import classNames from '../../../shared/lib/classNames';
+import MinifyButton from './MinifyButton';
+import CloseButton from './CloseButton';
+import {Application, APPLICATION_DATA} from '@/shared/constants';
+import useStore from '@/shared/store';
 
 interface WindowProps {
-    app: Application;
-    active: boolean;
-    minified: boolean;
-    style: CSSProperties;
-    children: ReactNode;
+  app: Application;
+  active: boolean;
+  minified: boolean;
+  style: CSSProperties;
+  children: ReactNode;
 }
 
 export default function Window(props: WindowProps) {
@@ -35,7 +35,10 @@ export default function Window(props: WindowProps) {
   };
 
   return (
-    <div className={classNames(css.container, 'absolute duration-100', minified && css.minified)} style={style} onClick={() => setActiveWindow(app)}>
+    <div
+      className={classNames(css.container, 'absolute duration-100', minified && css.minified)} style={style}
+      onClick={() => setActiveWindow(app)}
+    >
       <div className={classNames(css.header, 'flex justify-between items-center mb-2', active && css.active)}>
         <div className={classNames(css.caption, 'flex flex-row gap-2')}>
           {icon && <img src={icon} alt={name} />}

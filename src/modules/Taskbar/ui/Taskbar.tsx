@@ -1,8 +1,8 @@
 import css from './Taskbar.module.css';
-import classNames from '@/shared/lib/classNames.ts';
-import useStore from '@/shared/store.ts';
-import Button from '@/shared/ui/Button/Button.tsx';
-import {APPLICATION_DATA} from '@/shared/constants.ts';
+import classNames from '@/shared/lib/classNames';
+import useStore from '@/shared/store';
+import Button from '@/shared/ui/Button/Button';
+import {APPLICATION_DATA} from '@/shared/constants';
 
 export default function Taskbar() {
   const {
@@ -26,8 +26,8 @@ export default function Taskbar() {
             before={<img width={16} height={16} src={icon} alt={name} />}
             className={classNames(css.button, activeWindow === x.application && css.active)}
             onClick={() => (x.minified
-              ? restoreWindow(x.application)
-              : minifyWindow(x.application)
+                ? restoreWindow(x.application)
+                : minifyWindow(x.application)
             )}
           >
             {name}

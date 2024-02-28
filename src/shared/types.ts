@@ -5,7 +5,7 @@ import {
   StarSpectralClass,
   StarType,
   SurfaceType
-} from '@/shared/constants.ts';
+} from '@/shared/constants';
 
 export interface ApplicationData {
   name: string;

@@ -1,11 +1,12 @@
 import {CSSProperties} from 'react';
-import classNames from '@/shared/lib/classNames.ts';
+import classNames from '@/shared/lib/classNames';
 
 interface Props {
   className: string;
   color?: string;
   size: number;
   style?: CSSProperties;
+
   onClick(): void;
 }
 
@@ -21,6 +22,7 @@ function BaseStar(props: Props) {
   return (
     <button
       onClick={onClick}
+      type="button"
       className={classNames(className, 'rounded-full m-auto')}
       style={{
         ...style,
