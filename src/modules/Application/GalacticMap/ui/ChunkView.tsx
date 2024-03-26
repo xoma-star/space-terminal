@@ -1,10 +1,10 @@
-import {Chunk} from '@/shared/types';
 import generateGalacticChunk from '../lib/generateGalacticChunk';
-import generateStarSystem from '@/shared/lib/generateStarSystem';
-import {StarType} from '@/shared/constants';
 import Star from './Star';
 import BlackHole from './BlackHole';
 import NeutronStar from './NeutronStar';
+import {useQuery} from '@tanstack/react-query';
+import GalacticMapService from '../api/GalacticMapService.ts';
+import Loader from '@/shared/ui/Loader/Loader.tsx';
 
 interface ChunkViewProps {
   chunk: Chunk;
@@ -18,7 +18,7 @@ export default function ChunkView(props: ChunkViewProps) {
 
   return (
     <>
-      {chunks.map((item: Chunk) => {
+      {chunks.map((item) => {
         const systemData = generateStarSystem(item);
         if (!systemData) {
           return (<div key={item} />);

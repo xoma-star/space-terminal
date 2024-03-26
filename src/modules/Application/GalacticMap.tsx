@@ -1,35 +1,43 @@
 import {memo, useState} from 'react';
-import css from './GalacticMap.module.css';
-import classNames from '@/shared/lib/classNames';
-import {MAX_CHUNK_DEPTH} from '@/shared/constants';
-import StarSystemView from './GalacticMap/ui/StarSystemView';
-import {Chunk} from '@/shared/types';
-import ChunkView from './GalacticMap/ui/ChunkView';
-import SelectChunkView from './GalacticMap/ui/SelectChunkView';
-import MapControls from './GalacticMap/ui/MapControls';
+import {MapContainer, TileLayer, useMap, useMapEvents} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import {LatLngBounds} from 'leaflet';
+import {useQuery} from '@tanstack/react-query';
+import GalacticMapService from './GalacticMap/api/GalacticMapService.ts';
+
+function MapEvents() {
+  const map = useMap();
+  const mapEvents = useMapEvents({
+    dragend(e){
+      console.log(map.getBounds())
+    }
+  });
+
+  return null;
+}
+
+const MAX_BOUNDS = new LatLngBounds([54, 54], [55, 55]);
 
 function GalacticMap() {
-  const [chunk, setChunk] = useState<Chunk | null>(null);
+  const [markers, setMarkers] = useState([]);
+  const {data} = useQuery({queryKey: ['biba'], queryFn: () => GalacticMapService.getChunkPreview([54, 54], [55, 55])});
 
-  const chunkDepth = Number(chunk?.split(':')[0].length);
-  const shouldDisplayStars = chunkDepth >= MAX_CHUNK_DEPTH;
-  const shouldDisplayPlanets = chunkDepth >= MAX_CHUNK_DEPTH + 1;
+  console.log(data);
 
   return (
-    <>
-      <MapControls chunk={chunk} setChunk={setChunk} />
-      <div className={classNames(css.map, shouldDisplayPlanets && css.planets, 'bg-black grid bg-repeat')}>
-        {shouldDisplayPlanets ? (
-          <StarSystemView />
-        ) : (
-          shouldDisplayStars ? (
-            <ChunkView chunk={chunk as Chunk} setChunk={setChunk} />
-          ) : (
-            <SelectChunkView chunk={chunk} setChunk={setChunk} />
-          )
-        )}
-      </div>
-    </>
+    <MapContainer
+      center={{lng: 54.5, lat: 54.5}}
+      zoom={13}
+      minZoom={11}
+      className="w-full h-[800px]"
+      maxBounds={MAX_BOUNDS}
+    >
+      <TileLayer
+        url="http://localhost:3000/map/{z}/{x}/{y}"
+        // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <MapEvents />
+    </MapContainer>
   );
 }
 

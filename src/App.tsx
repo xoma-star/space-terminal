@@ -1,19 +1,16 @@
 import {Desktop} from './modules/Desktop';
 import WindowsContainer from './modules/Window/ui/WindowsContainer';
 import Taskbar from './modules/Taskbar/ui/Taskbar';
-import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache()
-});
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
+    <QueryClientProvider client={queryClient}>
       <Desktop />
       <WindowsContainer />
       <Taskbar />
-    </ApolloProvider>
+    </QueryClientProvider>
   );
 }
