@@ -1,16 +1,12 @@
-import {CSSProperties} from 'react';
+import {CSSProperties, HTMLAttributes} from 'react';
 import classNames from '@/shared/lib/classNames';
 
-interface Props {
-  className: string;
+export interface BaseStarProps extends HTMLAttributes<HTMLButtonElement>{
   color?: string;
   size: number;
-  style?: CSSProperties;
-
-  onClick(): void;
 }
 
-function BaseStar(props: Props) {
+function BaseStar(props: BaseStarProps) {
   const {
     className,
     color,
@@ -26,7 +22,6 @@ function BaseStar(props: Props) {
       className={classNames(className, 'rounded-full m-auto')}
       style={{
         ...style,
-        transform: `translate(${(Math.random() - 0.5) * 50}px, ${(Math.random() - 0.5) * 50}px)`,
         '--star-color': color,
         width: size,
         height: size

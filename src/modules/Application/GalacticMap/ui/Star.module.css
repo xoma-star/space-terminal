@@ -1,6 +1,7 @@
 .star {
     background-color: var(--star-color);
     box-shadow: var(--star-color) 0 0 5px 1px;
+    transition: .2s;
 }
 
 @keyframes spin {
