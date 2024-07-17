@@ -1,4 +1,4 @@
-import {BlackHoleType} from '@/shared/constants';
+import {BlackHoleType} from '@xoma_star/shared-stellar-goose';
 import {BaseProps} from './Star';
 import BaseStar from './BaseStar';
 import css from './Star.module.css';

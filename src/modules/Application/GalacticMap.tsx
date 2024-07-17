@@ -1,17 +1,19 @@
 import {memo, useState} from 'react';
 import {renderToString} from 'react-dom/server';
-import {MapContainer, TileLayer, useMap, useMapEvents, Marker} from 'react-leaflet';
+import {MapContainer, Marker, TileLayer, useMap, useMapEvents} from 'react-leaflet';
 import {divIcon} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {useQuery} from '@tanstack/react-query';
 import GalacticMapService from './GalacticMap/api/GalacticMapService.ts';
 import Star from './GalacticMap/ui/Star';
+import {StarType, type SystemData} from '@xoma_star/shared-stellar-goose';
+import BlackHole from './GalacticMap/ui/BlackHole.tsx';
 
 const MAX_ZOOM = 18;
 
 function Map() {
   const [bounds, setBounds] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  const [markers, setMarkers] = useState<SystemData[]>([]);
 
   const map = useMap();
   const zoom = map.getZoom();
@@ -19,7 +21,7 @@ function Map() {
   useQuery({
     queryKey: ['biba', bounds, zoom],
     queryFn: () => {
-      if (zoom > MAX_ZOOM - 2) {
+      if (bounds && zoom > MAX_ZOOM - 2) {
         GalacticMapService
           .getChunkPreview(bounds)
           .then((data) => {
@@ -82,12 +84,25 @@ function Map() {
           }
         }
 
-        const html = renderToString(
-          <Star
-            spectralClass={x.spectralClass}
-            luminosityClass={x.luminosityClass}
-          />
-        );
+        let component;
+        switch (x.starType) {
+          case StarType.STAR:
+            component = (
+              <Star
+                spectralClass={x.spectralClass}
+                luminosityClass={x.luminosityClass}
+              />
+            );
+            break;
+          case StarType.BLACK_HOLE:
+            component = (
+              <BlackHole
+                blackHoleType={x.blackHoleType}
+              />
+            );
+        }
+
+        const html = renderToString(component);
 
         return (
           <Marker
