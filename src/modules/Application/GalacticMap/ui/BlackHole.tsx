@@ -1,5 +1,4 @@
-import {BlackHoleType} from '@xoma_star/shared-stellar-goose';
-import {BaseProps} from './Star';
+import {BlackHoleType, StarType, type SystemData} from '@xoma_star/shared-stellar-goose';
 import BaseStar from './BaseStar';
 import css from './Star.module.css';
 
@@ -10,9 +9,7 @@ const BLACK_HOLE_SIZE: Record<BlackHoleType, number> = {
   [BlackHoleType.MICRO]: 32
 };
 
-interface BlackHoleProps extends BaseProps {
-  blackHoleType: BlackHoleType;
-}
+type BlackHoleProps = Partial<SystemData<StarType.BLACK_HOLE>>;
 
 function BlackHole(props: BlackHoleProps) {
   const {
@@ -25,7 +22,6 @@ function BlackHole(props: BlackHoleProps) {
       {...restProps}
       className={css.blackHole}
       size={BLACK_HOLE_SIZE[blackHoleType]}
-      style={{animationDuration: `${Math.random() * 10 + 5}s`}}
     />
   );
 }

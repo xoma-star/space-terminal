@@ -1,11 +1,15 @@
 import {CSSProperties, HTMLAttributes} from 'react';
 import classNames from '@/shared/lib/classNames';
 
-export interface BaseStarProps extends HTMLAttributes<HTMLButtonElement>{
+interface BaseStarProps extends HTMLAttributes<HTMLButtonElement>{
   color?: string;
   size: number;
 }
 
+/**
+ * базовый компонент главного тела звездной системы
+ * ничего не знает о своем типе, но принимает стили для отображения
+ */
 function BaseStar(props: BaseStarProps) {
   const {
     className,

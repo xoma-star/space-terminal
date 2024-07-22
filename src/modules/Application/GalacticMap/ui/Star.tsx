@@ -1,16 +1,13 @@
 import css from './Star.module.css';
-import {STAR_COLOR_BY_SPECTRAL_CLASS, StarLuminosityClass, StarSpectralClass} from '@xoma_star/shared-stellar-goose';
-import BaseStar, {type BaseStarProps} from './BaseStar';
-import {useEffect} from 'react';
+import {
+  STAR_COLOR_BY_SPECTRAL_CLASS,
+  StarLuminosityClass,
+  StarSpectralClass, StarType,
+  SystemData
+} from '@xoma_star/shared-stellar-goose';
+import BaseStar from './BaseStar';
 
-export interface BaseProps extends BaseStarProps{
-  onClick(): void;
-}
-
-interface StarProps extends BaseProps {
-  spectralClass: StarSpectralClass;
-  luminosityClass: StarLuminosityClass;
-}
+type StarProps = Partial<SystemData<StarType.STAR>>;
 
 const STAR_SIZE_BY_LUMINOSITY_CLASS: Record<StarLuminosityClass, number> = {
   [StarLuminosityClass.I]: 64,
@@ -29,10 +26,6 @@ function Star(props: StarProps) {
     luminosityClass,
     ...restProps
   } = props;
-
-  useEffect(() => {
-    setInterval(() => console.log(3), 1000)
-  }, [])
 
   return (
     <BaseStar
