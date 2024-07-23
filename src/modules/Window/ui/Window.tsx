@@ -3,41 +3,39 @@ import css from './Window.module.css';
 import classNames from '../../../shared/lib/classNames';
 import MinifyButton from './MinifyButton';
 import CloseButton from './CloseButton';
-import {Application, APPLICATION_DATA} from '@/shared/constants';
 import useStore from '@/shared/store';
+import type {PopupData} from '@/shared/types';
 
-interface WindowProps {
-  app: Application;
+interface WindowProps extends Omit<PopupData, 'content'>{
   active: boolean;
   minified: boolean;
   style: CSSProperties;
+  id: string;
   children: ReactNode;
 }
 
 export default function Window(props: WindowProps) {
   const {
-    app,
+    name,
+    icon,
     active,
     minified,
     style,
+    id,
     children
   } = props;
-  const {
-    icon,
-    name
-  } = APPLICATION_DATA[app];
 
   const {closeWindow, minifyWindow, setActiveWindow} = useStore();
 
   const minifyHandler = (e: MouseEvent) => {
     e.stopPropagation();
-    minifyWindow(app);
+    minifyWindow(id);
   };
 
   return (
     <div
-      className={classNames(css.container, 'absolute duration-100', minified && css.minified)} style={style}
-      onClick={() => setActiveWindow(app)}
+      className={classNames(css.container, 'absolute duration-100 my-s', minified && css.minified)} style={style}
+      onClick={() => setActiveWindow(id)}
     >
       <div className={classNames(css.header, 'flex justify-between items-center mb-2', active && css.active)}>
         <div className={classNames(css.caption, 'flex flex-row gap-2')}>
@@ -46,7 +44,7 @@ export default function Window(props: WindowProps) {
         </div>
         <div className={classNames(css.controls, 'flex gap-1 ml-4')}>
           <MinifyButton onClick={minifyHandler} />
-          <CloseButton onClick={() => closeWindow(app)} />
+          <CloseButton onClick={() => closeWindow(id)} />
         </div>
       </div>
       <div className={classNames(css.body, 'overflow-auto relative')}>

@@ -1,7 +1,6 @@
 import {KeyboardEvent, useEffect, useRef, useState} from 'react';
 import css from './Terminal.module.css';
 import useStore from '@/shared/store';
-import {Application} from '@/shared/constants';
 import commandHandler from './Terminal/lib/commandHandler';
 
 function Terminal() {
@@ -9,12 +8,6 @@ function Terminal() {
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>();
   const {activeWindow} = useStore();
-
-  useEffect(() => {
-    if (activeWindow === Application.TERMINAL) {
-      inputRef.current?.focus();
-    }
-  }, [input, activeWindow]);
 
   const changeHandler = (e: KeyboardEvent) => {
     if (e.key === 'Backspace') {

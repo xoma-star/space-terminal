@@ -2,7 +2,7 @@ import css from './Star.module.css';
 import {
   STAR_COLOR_BY_SPECTRAL_CLASS,
   StarLuminosityClass,
-  StarSpectralClass, StarType,
+  StarType,
   SystemData
 } from '@xoma_star/shared-stellar-goose';
 import BaseStar from './BaseStar';

@@ -12,6 +12,20 @@ export default {
       },
       boxShadow: {
         default: 'var(--box-shadow-default)'
+      },
+      padding: {
+        xs: 'var(--offset_xs)',
+        s: 'var(--offset_s)',
+        m: 'var(--offset_m)',
+        l: 'var(--offset_l)',
+        xl: 'var(--offset_xl)'
+      },
+      margin: {
+        xs: 'var(--offset_xs)',
+        s: 'var(--offset_s)',
+        m: 'var(--offset_m)',
+        l: 'var(--offset_l)',
+        xl: 'var(--offset_xl)'
       }
     },
   },

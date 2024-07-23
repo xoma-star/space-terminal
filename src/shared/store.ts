@@ -1,50 +1,67 @@
 import {create} from 'zustand';
 import {Application} from '@/shared/constants';
+import type {PopupData} from '@/shared/types';
+import type {ReactNode} from 'react';
+import {v7 as generateId} from 'uuid';
+
+interface WindowData extends PopupData {
+  /** id приложения */
+  id: string,
+  /** свернуто ли оно */
+  minified: boolean
+  zIndex: number;
+}
 
 interface Store {
   /** активное окно */
-  activeWindow: Application | null;
+  activeWindow: string | null;
   /** открытые окна */
-  windows: {
-    /** id приложения */
-    application: Application,
-    /** свернуто ли оно */
-    minified: boolean
-    /** z-index */
-    zIndex: number;
-  }[];
+  windows: WindowData[];
 
   /** установить активное окно */
-  setActiveWindow(payload: Application | null): void;
+  setActiveWindow(id: string | null): void;
 
-  /** открыть приложение */
-  openWindow(payload: Application): void;
+  /**
+   * открыть приложение
+   * @param payload конфиг окна
+   * @param shouldRestore стоит ли развернуть окно вместо открытия нового (если оно уже открыто).
+   * при этом подразумевается, что иконка и имя будут те же самые
+   */
+  openWindow(payload: PopupData, shouldRestore?: boolean): void;
 
   /** закрыть приложение */
-  closeWindow(payload: Application): void;
+  closeWindow(id: string): void;
 
-  minifyWindow(payload: Application): void;
+  minifyWindow(id: string): void;
 
-  restoreWindow(payload: Application): void;
+  restoreWindow(id: string): void;
 }
 
 const useStore = create<Store>((setState, getState) => ({
-  activeWindow: Application.MAP,
-  windows: [{application: Application.MAP, zIndex: 1, minified: false}],
-  setActiveWindow(payload: Application | null) {
-    setState({activeWindow: payload});
+  activeWindow: null,
+  windows: [],
+  setActiveWindow(id: string | null) {
+    setState({activeWindow: id});
   },
-  openWindow(payload: Application) {
-    let alreadyOpened = false;
-    let maxZIndex = 0;
-    const windows = getState()
-      .windows
-      .map((x) => {
-        if (x.application === payload) {
-          alreadyOpened = true;
-          x.minified = false;
-        }
+  openWindow(payload: PopupData, shouldRestore) {
+    const {
+      content,
+      name,
+      icon
+    } = payload;
+    const {windows, restoreWindow} = getState();
 
+    if (shouldRestore) {
+      const window = windows.find(x => x.icon === icon && x.name === name);
+      if (window) {
+        return restoreWindow(window.id);
+      }
+    }
+
+    const id = generateId();
+    let maxZIndex = 0;
+    const newWindows = windows
+      .map((x) => {
         if (maxZIndex < x.zIndex) {
           maxZIndex = x.zIndex;
         }
@@ -52,32 +69,30 @@ const useStore = create<Store>((setState, getState) => ({
         return x;
       });
 
-    if (!alreadyOpened) {
-      windows.push({application: payload, minified: false, zIndex: maxZIndex + 1});
-    }
+    newWindows.push({content, minified: false, zIndex: maxZIndex + 1, id, icon, name});
 
     setState({
-      windows,
-      activeWindow: payload
+      windows: newWindows,
+      activeWindow: id
     });
   },
-  closeWindow(payload: Application) {
+  closeWindow(id: string) {
     const {activeWindow} = getState();
     setState({
-      windows: getState().windows.filter((x) => x.application !== payload),
-      activeWindow: activeWindow === payload ? null : activeWindow
+      windows: getState().windows.filter((x) => x.id !== id),
+      activeWindow: activeWindow === id ? null : activeWindow
     });
   },
-  minifyWindow(payload: Application) {
+  minifyWindow(id: string) {
     setState({
       windows: getState().windows.map((x) => ({
         ...x,
-        minified: x.application === payload ? true : x.minified
+        minified: x.id === id ? true : x.minified
       })),
       activeWindow: null
     });
   },
-  restoreWindow(payload: Application) {
+  restoreWindow(id: string) {
     const {windows} = getState();
     const maxZIndex = windows.reduce((acc, curr) => (curr.zIndex > acc
       ? curr.zIndex
@@ -85,11 +100,11 @@ const useStore = create<Store>((setState, getState) => ({
 
     setState({
       windows: windows.map((x) => ({
-        minified: x.application === payload ? false : x.minified,
-        application: x.application,
-        zIndex: x.application === payload ? maxZIndex + 1 : x.zIndex
+        ...x,
+        minified: x.id === id ? false : x.minified,
+        zIndex: x.id === id ? maxZIndex + 1 : x.zIndex
       })),
-      activeWindow: payload
+      activeWindow: id
     });
   }
 }));

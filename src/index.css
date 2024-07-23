@@ -90,6 +90,13 @@
     inset 2px 2px var(--button-highlight);
 
     --checker: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2P8/////4MHDzIwHjhw4L+9vT0DAHAFCj6esq3FAAAAAElFTkSuQmCC);
+
+    --offset_2xs: 0.5rem;
+    --offset_xs: 0.75rem;
+    --offset_s: 1rem;
+    --offset_m: 1.25rem;
+    --offset_l: 1.5rem;
+    --offset_xl: 2rem;
 }
 
 ::-webkit-scrollbar {

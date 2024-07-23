@@ -1,5 +1,7 @@
-export interface ApplicationData {
-  name: string;
-  icon: string;
-  availableOnDesktop?: boolean;
+import {ReactNode} from 'react';
+
+export interface PopupData {
+  content: ReactNode;
+  icon?: string;
+  name?: string;
 }
