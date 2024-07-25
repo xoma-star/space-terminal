@@ -8,8 +8,8 @@ const queryClient = new QueryClient();
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Desktop />
       <WindowsContainer />
+      <Desktop />
       <Taskbar />
     </QueryClientProvider>
   );

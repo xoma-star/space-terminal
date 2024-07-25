@@ -4,40 +4,12 @@
     transition: .2s;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes breathe {
-    from {
-        scale: 1;
-        box-shadow: #7373dc 0 0 10px 10px;
-    }
-    to {
-        scale: 1.1;
-        box-shadow: #7373dc 0 0 5px 5px;
-    }
-}
-
 .blackHole {
     background-color: #000;
-    box-shadow: #7373dc -2px 3px 5px 1px;
+    box-shadow: #7373dc -0.125rem 0.1875rem 5px 1px;
 }
 
 .neutronStar {
     background-color: #ffffff;
     animation: breathe 5s cubic-bezier(0.42, 0, 0, 0.9) infinite alternate;
-}
-
-.orbit {
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    animation-name: spin;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
 }

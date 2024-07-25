@@ -1,10 +1,10 @@
-import {CSSProperties, MouseEvent, ReactNode} from 'react';
+import {CSSProperties, MouseEvent, ReactNode, useMemo} from 'react';
 import css from './Window.module.css';
-import classNames from '../../../shared/lib/classNames';
 import MinifyButton from './MinifyButton';
 import CloseButton from './CloseButton';
 import useStore from '@/shared/store';
 import type {PopupData} from '@/shared/types';
+import clsx from 'clsx';
 
 interface WindowProps extends Omit<PopupData, 'content'>{
   active: boolean;
@@ -22,7 +22,8 @@ export default function Window(props: WindowProps) {
     minified,
     style,
     id,
-    children
+    children,
+    shouldStretch = {x: true}
   } = props;
 
   const {closeWindow, minifyWindow, setActiveWindow} = useStore();
@@ -34,20 +35,29 @@ export default function Window(props: WindowProps) {
 
   return (
     <div
-      className={classNames(css.container, 'absolute duration-100 my-s', minified && css.minified)} style={style}
+      className={clsx(
+        css.container,
+        'fixed duration-100 max-w-full max-h-full',
+        {
+          'w-full': shouldStretch === true || shouldStretch?.x,
+          'h-full': shouldStretch === true || shouldStretch?.y
+        },
+        minified && css.minified
+      )}
+      style={style}
       onClick={() => setActiveWindow(id)}
     >
-      <div className={classNames(css.header, 'flex justify-between items-center mb-2', active && css.active)}>
-        <div className={classNames(css.caption, 'flex flex-row gap-2')}>
+      <div className={clsx(css.header, 'flex justify-between items-center', active && css.active)}>
+        <div className={clsx(css.caption, 'flex flex-row gap-2xs')}>
           {icon && <img src={icon} alt={name} />}
           <span>{name}</span>
         </div>
-        <div className={classNames(css.controls, 'flex gap-1 ml-4')}>
+        <div className={clsx(css.controls, 'flex gap-3xs ml-s')}>
           <MinifyButton onClick={minifyHandler} />
           <CloseButton onClick={() => closeWindow(id)} />
         </div>
       </div>
-      <div className={classNames(css.body, 'overflow-auto relative')}>
+      <div className={clsx(css.body, 'overflow-auto relative')}>
         {children}
       </div>
     </div>

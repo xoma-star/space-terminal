@@ -1,0 +1,5 @@
+.paragraph {
+    line-height: 1.25rem;
+    font-size: var(--font-size_s);
+    font-weight: 400;
+}

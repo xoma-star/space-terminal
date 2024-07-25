@@ -2,6 +2,7 @@ import {type ReactNode, useState} from 'react';
 import DesktopIcon from './DesktopIcon';
 import useStore from '@/shared/store';
 import {GalacticMap, Terminal} from '@/modules/Application';
+import {Icon} from '@/shared/constants';
 
 /** список приложений */
 enum Application {
@@ -12,7 +13,7 @@ enum Application {
 
 interface ApplicationData {
   name: string;
-  icon: string;
+  icon: Icon;
   availableOnDesktop?: boolean;
   content: ReactNode;
   shouldOpenOnce?: boolean;
@@ -22,20 +23,20 @@ interface ApplicationData {
 const APPLICATION_DATA: Record<Application, ApplicationData> = {
   [Application.TERMINAL]: {
     name: 'Терминал',
-    icon: '/desktop-icons/computer-4.png',
+    icon: Icon.COMPUTER,
     availableOnDesktop: true,
     content: <Terminal />
   },
   [Application.MARKET]: {
     name: 'Торговая площадка',
-    icon: '/desktop-icons/shell_window4.png',
+    icon: Icon.SHELL_WINDOW,
     availableOnDesktop: true,
     content: <div>market</div>,
     shouldOpenOnce: true
   },
   [Application.MAP]: {
     name: 'Карта',
-    icon: '/desktop-icons/globe_map-0.png',
+    icon: Icon.GLOBE_MAP,
     availableOnDesktop: true,
     content: <GalacticMap />,
     shouldOpenOnce: true
@@ -44,7 +45,7 @@ const APPLICATION_DATA: Record<Application, ApplicationData> = {
 
 export default function Desktop() {
   const [selectedApp, setSelectedApp] = useState<null | Application>(null);
-  const {openWindow, restoreWindow} = useStore();
+  const {openWindow} = useStore();
 
   const clickHandler = (app: Application) => {
     const {content, name, icon, shouldOpenOnce} = APPLICATION_DATA[app];
@@ -54,7 +55,7 @@ export default function Desktop() {
   };
 
   return (
-    <div className="flex flex-col bg-black w-full h-full">
+    <div className="flex flex-col bg-black w-full h-full items-center justify-center absolute top-0 left-0">
       {
         (Object.keys(APPLICATION_DATA) as Application[])
           .filter((x) => APPLICATION_DATA[x].availableOnDesktop)

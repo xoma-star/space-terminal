@@ -1,6 +1,6 @@
 import css from './Form.module.css';
 import {cloneElement, ReactElement} from 'react';
-import classNames from '@/shared/lib/classNames';
+import clsx from 'clsx';
 
 interface BaseFormRowProps {
   children: ReactElement;
@@ -30,7 +30,7 @@ function FormRow(props: FormRowProps) {
   } = props;
 
   return (
-    <div className={classNames(css.formRow, direction === 'row' ? 'contents' : 'flex flex-col col-start-1 col-end-3')}>
+    <div className={clsx(css.formRow, direction === 'row' ? 'contents' : 'flex flex-col col-start-1 col-end-3')}>
       {label && (
         <label className={css.label} htmlFor={htmlFor}>
           <u>{label[0]}</u>

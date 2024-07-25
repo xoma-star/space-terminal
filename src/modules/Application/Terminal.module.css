@@ -5,7 +5,7 @@
 .caret {
     color: white;
     animation: blink .5s step-end infinite;
-    margin-left: 3px;
+    margin-left: 0.1875rem;
 }
 
 @keyframes blink {

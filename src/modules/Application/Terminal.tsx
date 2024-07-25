@@ -1,13 +1,13 @@
-import {ChangeEvent, FormEvent, KeyboardEvent, useEffect, useRef, useState} from 'react';
+import {ChangeEvent, FormEvent, useRef, useState} from 'react';
 import css from './Terminal.module.css';
-import useStore from '@/shared/store';
 import commandHandler from './Terminal/lib/commandHandler';
+import useWindows from '@/shared/lib/useWindows';
 
 function Terminal() {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const inputRef = useRef<HTMLInputElement>();
-  const {activeWindow} = useStore();
+  const {showError} = useWindows();
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -16,17 +16,15 @@ function Terminal() {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    setMessages((prevState) => {
-      const newMessages = [...prevState, input];
 
-      try {
-        commandHandler(input);
-      } catch (e: Error) {
-        newMessages.push(e.message);
-      }
-
-      return newMessages;
-    });
+    const newMessages = [...messages];
+    try {
+      commandHandler(input);
+    } catch (e: Error) {
+      newMessages.push(e.message);
+      showError(e);
+    }
+    setMessages(newMessages);
     setInput('');
   };
 
@@ -39,7 +37,7 @@ function Terminal() {
         {[...messages, input].map((x, i) => (
           <div key={i} className="flex flex-row">
             <span className="text-green-500">[root@localhost ~]$</span>
-            <span className="ml-2 whitespace-pre">{x}</span>
+            <span className="ml-2xs whitespace-pre">{x}</span>
             {i === messages.length && <span className={css.caret}>_</span>}
           </div>
         ))}

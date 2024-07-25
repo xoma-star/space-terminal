@@ -1,7 +1,7 @@
-import {CSSProperties, HTMLAttributes} from 'react';
-import classNames from '@/shared/lib/classNames';
+import type {CSSProperties, HTMLAttributes} from 'react';
+import clsx from 'clsx';
 
-interface BaseStarProps extends HTMLAttributes<HTMLButtonElement>{
+interface BaseStarProps extends HTMLAttributes<HTMLButtonElement> {
   color?: string;
   size: number;
 }
@@ -23,7 +23,7 @@ function BaseStar(props: BaseStarProps) {
     <button
       onClick={onClick}
       type="button"
-      className={classNames(className, 'rounded-full m-auto')}
+      className={clsx(className, 'rounded-full m-auto')}
       style={{
         ...style,
         '--star-color': color,

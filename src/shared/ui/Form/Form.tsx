@@ -1,6 +1,6 @@
-import {FormEvent, HTMLAttributes, ReactNode} from 'react';
-import classNames from '@/shared/lib/classNames';
+import type {FormEvent, HTMLAttributes, ReactNode} from 'react';
 import css from './Form.module.css';
+import clsx from 'clsx';
 
 interface FormProps extends HTMLAttributes<HTMLFormElement> {
   children: ReactNode;
@@ -23,7 +23,7 @@ function Form(props: FormProps) {
     <form
       {...restProps}
       onSubmit={submitHandler}
-      className={classNames('gap-2 grid h-fit items-center', className, css.form)}
+      className={clsx('gap-2xs grid h-fit items-center', className, css.form)}
     >
       {children}
     </form>

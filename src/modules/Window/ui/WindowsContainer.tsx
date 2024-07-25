@@ -5,25 +5,21 @@ function WindowsContainer() {
   const {activeWindow, windows} = useStore();
 
   return (
-    <div className="fixed top-0 left-0 box-border w-full px-s">
+    <div className="relative top-0 left-0 box-border w-full h-full flex justify-center items-center">
       {windows.map((x) => {
         const {
           content,
-          name,
-          icon,
           id,
-          minified,
-          zIndex
+          zIndex,
+          ...restProps
         } = x;
         return (
           <Window
+            {...restProps}
             style={{zIndex}}
             key={id}
             id={id}
-            icon={icon}
-            name={name}
             active={activeWindow === id}
-            minified={minified}
           >
             {content}
           </Window>

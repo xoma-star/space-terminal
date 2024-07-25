@@ -1,6 +1,6 @@
 import {InputHTMLAttributes} from 'react';
 import css from './Input.module.css';
-import classNames from '@/shared/lib/classNames';
+import clsx from 'clsx';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'text' | 'password' | 'number';
@@ -14,7 +14,7 @@ function Input(props: InputProps) {
   return (
     <input
       {...restProps}
-      className={classNames(css.input, 'appearance-none border-none focus:outline-none')}
+      className={clsx(css.input, 'appearance-none border-none focus:outline-none')}
     />
   );
 }

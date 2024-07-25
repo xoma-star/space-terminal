@@ -1,9 +1,9 @@
 .button {
     background-image: url('/icons/minimize.svg');
-    background-position: bottom 3px left 4px;
+    background-position: bottom 0.1875rem left 0.25rem;
     background-repeat: no-repeat;
-    min-height: 14px;
-    min-width: 16px;
+    min-height: 0.875rem;
+    min-width: 1rem;
     padding: 0;
 }
 

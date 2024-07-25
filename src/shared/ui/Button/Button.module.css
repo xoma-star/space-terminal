@@ -6,24 +6,24 @@
     background: var(--surface);
     box-shadow: var(--border-raised-outer), var(--border-raised-inner);
     border-radius: 0;
-    line-height: 23px;
-    min-width: 75px;
-    min-height: 23px;
-    padding: 0 12px;
+    line-height: 1.4375rem;
+    min-width: 4.6875rem;
+    min-height: 1.4375rem;
+    padding: 0 0.75rem;
     cursor: default;
 }
 
 .button:not(:disabled):active {
     box-shadow: var(--border-sunken-outer), var(--border-sunken-inner);
-    text-shadow: 1px 1px var(--text-color);
+    text-shadow: 0.0625rem 0.0625rem var(--text-color);
 }
 
 .button:focus {
-    outline: 1px dotted #000000;
-    outline-offset: -4px;
+    outline: 0.0625rem dotted #000000;
+    outline-offset: -0.25rem;
 }
 
 .button:disabled {
     color: var(--button-shadow);
-    text-shadow: 1px 1px 0 var(--button-highlight);
+    text-shadow: 0.0625rem 0.0625rem 0 var(--button-highlight);
 }

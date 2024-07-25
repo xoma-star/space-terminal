@@ -1,6 +1,6 @@
-import {HTMLAttributes} from 'react';
+import type {HTMLAttributes} from 'react';
 import css from './Title.module.css';
-import classNames from '@/shared/lib/classNames';
+import clsx from 'clsx';
 
 interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {
   children: string;
@@ -27,7 +27,7 @@ function Title(props: TitleProps) {
   }
 
   return (
-    <h2 {...restProps} className={classNames(className, props.className)}>
+    <h2 {...restProps} className={clsx(className, props.className)}>
       {children}
     </h2>
   );

@@ -1,6 +1,6 @@
-import {ButtonHTMLAttributes, CSSProperties} from 'react';
+import type {ButtonHTMLAttributes, CSSProperties} from 'react';
 import css from './DesktopIcon.module.css';
-import classNames from '@/shared/lib/classNames';
+import clsx from 'clsx';
 
 interface IconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   caption: string;
@@ -20,7 +20,7 @@ export default function DesktopIcon(props: IconProps) {
     <button
       {...restProps}
       type="button"
-      className={classNames(css.desktopIcon, selected && css.active, 'flex flex-col items-center')}
+      className={clsx(css.desktopIcon, selected && css.active, 'flex flex-col items-center')}
     >
       <div className={css.iconWrapper}>
         <img src={img} alt={caption} />
@@ -29,7 +29,7 @@ export default function DesktopIcon(props: IconProps) {
           style={{'--mask': `url('${img}')`} as CSSProperties}
         />
       </div>
-      <span className={classNames(css.title, 'flex justify-center w-full text-center box-border')}>
+      <span className={clsx(css.title, 'flex justify-center w-full text-center box-border')}>
         {caption}
       </span>
     </button>

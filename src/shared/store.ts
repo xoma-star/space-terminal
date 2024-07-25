@@ -1,7 +1,5 @@
 import {create} from 'zustand';
-import {Application} from '@/shared/constants';
 import type {PopupData} from '@/shared/types';
-import type {ReactNode} from 'react';
 import {v7 as generateId} from 'uuid';
 
 interface WindowData extends PopupData {
@@ -47,7 +45,8 @@ const useStore = create<Store>((setState, getState) => ({
     const {
       content,
       name,
-      icon
+      icon,
+      shouldStretch
     } = payload;
     const {windows, restoreWindow} = getState();
 
@@ -69,7 +68,7 @@ const useStore = create<Store>((setState, getState) => ({
         return x;
       });
 
-    newWindows.push({content, minified: false, zIndex: maxZIndex + 1, id, icon, name});
+    newWindows.push({content, minified: false, zIndex: maxZIndex + 1, id, icon, name, shouldStretch});
 
     setState({
       windows: newWindows,

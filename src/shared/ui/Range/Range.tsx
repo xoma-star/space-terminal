@@ -1,6 +1,6 @@
 import {InputHTMLAttributes, ReactNode} from 'react';
-import classNames from '@/shared/lib/classNames';
 import css from './Range.module.css';
+import clsx from 'clsx';
 
 interface RangeProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: 'range';
@@ -17,12 +17,12 @@ function Range(props: RangeProps) {
   } = props;
 
   return (
-    <div className={classNames(className, 'flex flex-row items-center gap-2')}>
+    <div className={clsx(className, 'flex flex-row items-center gap-2xs')}>
       {leftLabel && <span>{leftLabel}</span>}
       <input
         {...restProps}
         type="range"
-        className={classNames('appearance-none focus:outline-none bg-transparent w-full', css.range)}
+        className={clsx('appearance-none focus:outline-none bg-transparent w-full', css.range)}
       />
       {rightLabel && <span>{rightLabel}</span>}
     </div>

@@ -30,6 +30,7 @@ function Map() {
           <Marker
             position={[x.y, x.x]}
             key={x.id}
+            onClick={console.log}
             icon={divIcon({
               className: '',
               html

@@ -1,6 +1,6 @@
-import {ButtonHTMLAttributes, ReactNode} from 'react';
+import type {ButtonHTMLAttributes, ReactNode} from 'react';
 import css from './Button.module.css';
-import classNames from '../../lib/classNames';
+import clsx from 'clsx';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   before?: ReactNode;
@@ -19,7 +19,7 @@ export default function Button(props: ButtonProps) {
   return (
     <button
       {...restProps}
-      className={classNames(className, css.button, 'flex flex-row gap-2 items-center justify-center')}
+      className={clsx(className, css.button, 'flex flex-row gap-2xs items-center justify-center')}
     >
       {before && <span>{before}</span>}
       <span>{children}</span>

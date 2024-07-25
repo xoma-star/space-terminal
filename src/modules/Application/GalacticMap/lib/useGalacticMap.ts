@@ -4,14 +4,16 @@ import {useMap, useMapEvents} from 'react-leaflet';
 import {useQuery} from '@tanstack/react-query';
 import GalacticMapService from '../api/GalacticMapService';
 import type {SystemData} from '@xoma_star/shared-stellar-goose';
+import useWindows from '@/shared/lib/useWindows';
 
 const MAX_ZOOM = 18;
 
 export default function useGalacticMap() {
   const [bounds, setBounds] = useState<LatLngBounds | null>(null);
   const [markers, setMarkers] = useState<SystemData[]>([]);
-
+  const {showError} = useWindows();
   const map = useMap();
+
   const zoom = map.getZoom();
 
   useEffect(() => {
@@ -43,7 +45,7 @@ export default function useGalacticMap() {
             return data;
           })
           .catch(e => {
-            console.error(e);
+            showError(e);
             return [];
           });
       }

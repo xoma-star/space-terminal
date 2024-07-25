@@ -1,0 +1,13 @@
+.small {
+    font-size: var(--font-size_m);
+}
+
+.medium {
+    font-size: var(--font-size_l);
+    font-weight: 700;
+}
+
+.large {
+    font-size: var(--font-size_xl);
+    font-weight: 700;
+}

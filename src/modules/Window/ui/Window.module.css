@@ -1,8 +1,7 @@
 .container {
     background-color: var(--surface);
-    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
-    padding: 3px;
-    width: calc(100% - var(--offset_s) * 2);
+    box-shadow: inset -0.0625rem -0.0625rem #0a0a0a, inset 0.0625rem 0.0625rem #dfdfdf, inset -0.125rem -0.125rem grey, inset 0.125rem 0.125rem #fff;
+    padding: 0.1875rem;
 }
 
 .container.minified {
@@ -14,7 +13,7 @@
     cursor: default;
     background: linear-gradient(to right, var(--dialog-gray), var(--dialog-gray-light));
     color: #ffffff;
-    padding: 3px 2px 3px 3px;
+    padding: 0.1875rem 0.125rem 0.1875rem 0.1875rem;
     font-weight: 700;
     letter-spacing: 0;
 }
@@ -24,12 +23,12 @@
 }
 
 .container .header .caption {
-    font-size: 12px;
+    font-size: var(--font-size_s);
 }
 
 .container .header .caption img {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
 }
 
 .container .header .controls {
@@ -37,5 +36,5 @@
 }
 
 .container .body {
-    max-height: calc(100dvh - 79px);
+    max-height: calc(100dvh - 4.9375rem);
 }

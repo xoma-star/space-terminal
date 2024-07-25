@@ -21,7 +21,6 @@
 }
 
 :root {
-    /* Color */
     --text-color: #222222;
     --surface: #c0c0c0;
     --button-highlight: #ffffff;
@@ -34,77 +33,57 @@
     --dialog-gray-light: #b5b5b5;
     --link-blue: #0000ff;
 
-    /* Spacing */
-    --element-spacing: 8px;
-    --grouped-button-spacing: 4px;
-    --grouped-element-spacing: 6px;
-    --radio-width: 12px;
-    --checkbox-width: 13px;
-    --radio-label-spacing: 6px;
-    --range-track-height: 4px;
-    --range-spacing: 10px;
-
-    /* Some detailed computations for radio buttons and checkboxes */
-    --radio-total-width-precalc: var(--radio-width) + var(--radio-label-spacing);
-    --radio-total-width: calc(var(--radio-total-width-precalc));
-    --radio-left: calc(-1 * var(--radio-total-width-precalc));
-    --radio-dot-width: 4px;
-    --radio-dot-top: calc(var(--radio-width) / 2 - var(--radio-dot-width) / 2);
-    --radio-dot-left: calc(
-            -1 * (var(--radio-total-width-precalc)) + var(--radio-width) / 2 - var(--radio-dot-width) / 2
-    );
-
-    --checkbox-total-width-precalc: var(--checkbox-width) + var(--radio-label-spacing);
-    --checkbox-total-width: calc(var(--checkbox-total-width-precalc));
-    --checkbox-left: calc(-1 * var(--checkbox-total-width-precalc));
-    --checkmark-width: 7px;
-    --checkmark-top: 3px;
-    --checkmark-left: 3px;
-
-    /* Borders */
-    --border-width: 1px;
-    --border-raised-outer: inset -1px -1px var(--window-frame),
-    inset 1px 1px var(--button-highlight);
-    --border-raised-inner: inset -2px -2px var(--button-shadow),
-    inset 2px 2px var(--button-face);
-    --border-sunken-outer: inset -1px -1px var(--button-highlight),
-    inset 1px 1px var(--window-frame);
-    --border-sunken-inner: inset -2px -2px var(--button-face),
-    inset 2px 2px var(--button-shadow);
+    --border-width: 0.0625rem;
+    --border-raised-outer: inset -0.0625rem -0.0625rem var(--window-frame),
+    inset 0.0625rem 0.0625rem var(--button-highlight);
+    --border-raised-inner: inset -0.125rem -0.125rem var(--button-shadow),
+    inset 0.125rem 0.125rem var(--button-face);
+    --border-sunken-outer: inset -0.0625rem -0.0625rem var(--button-highlight),
+    inset 0.0625rem 0.0625rem var(--window-frame);
+    --border-sunken-inner: inset -0.125rem -0.125rem var(--button-face),
+    inset 0.125rem 0.125rem var(--button-shadow);
 
     /* Window borders flip button-face and button-highlight */
-    --border-window-outer: inset -1px -1px var(--window-frame),
-    inset 1px 1px var(--button-face);
-    --border-window-inner: inset -2px -2px var(--button-shadow),
-    inset 2px 2px var(--button-highlight);
+    --border-window-outer: inset -0.0625rem -0.0625rem var(--window-frame),
+    inset 0.0625rem 0.0625rem var(--button-face);
+    --border-window-inner: inset -0.125rem -0.125rem var(--button-shadow),
+    inset 0.125rem 0.125rem var(--button-highlight);
 
     /* Field borders (checkbox, input, etc) flip window-frame and button-shadow */
-    --border-field: inset -1px -1px var(--button-highlight),
-    inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face),
-    inset 2px 2px var(--window-frame);
+    --border-field: inset -0.0625rem -0.0625rem var(--button-highlight),
+    inset 0.0625rem 0.0625rem var(--button-shadow), inset -0.125rem -0.125rem var(--button-face),
+    inset 0.125rem 0.125rem var(--window-frame);
 
     /* Tabs */
-    --border-tab: inset -1px 0 var(--window-frame),
-    inset 1px 1px var(--button-face),
-    inset -2px 0 var(--button-shadow),
-    inset 2px 2px var(--button-highlight);
+    --border-tab: inset -0.0625rem 0 var(--window-frame),
+    inset 0.0625rem 0.0625rem var(--button-face),
+    inset -0.125rem 0 var(--button-shadow),
+    inset 0.125rem 0.125rem var(--button-highlight);
 
     --checker: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2P8/////4MHDzIwHjhw4L+9vT0DAHAFCj6esq3FAAAAAElFTkSuQmCC);
 
+    --offset_3xs: 0.25rem;
     --offset_2xs: 0.5rem;
     --offset_xs: 0.75rem;
     --offset_s: 1rem;
     --offset_m: 1.25rem;
     --offset_l: 1.5rem;
     --offset_xl: 2rem;
+
+    --font-size_xs: 0.75rem;
+    --font-size_s: 0.875rem;
+    --font-size_m: 1rem;
+    --font-size_l: 1.125rem;
+    --font-size_xl: 1.25rem;
+    --font-size_2xl: 1.5rem;
 }
 
 ::-webkit-scrollbar {
-    width: 16px;
+    width: 1rem;
 }
 
 ::-webkit-scrollbar:horizontal {
-    height: 17px;
+    height: 1.0625rem;
 }
 
 ::-webkit-scrollbar-corner {
@@ -128,29 +107,29 @@
 }
 
 ::-webkit-scrollbar-button:vertical:start {
-    height: 17px;
+    height: 1.0625rem;
     background-image: url("./icons/button-up.svg");
 }
 
 ::-webkit-scrollbar-button:vertical:end {
-    height: 17px;
+    height: 1.0625rem;
     background-image: url("./icons/button-down.svg");
 }
 
 ::-webkit-scrollbar-button:horizontal:start {
-    width: 16px;
+    width: 1rem;
     background-image: url("./icons/button-left.svg");
 }
 
 ::-webkit-scrollbar-button:horizontal:end {
-    width: 16px;
+    width: 1rem;
     background-image: url("./icons/button-right.svg");
 }
 
 
 html, body {
     font-family: Tahoma, Verdana, Segoe, serif;
-    font-size: 12px;
+    font-size: var(--font-size_s);
     width: 100%;
     height: 100%;
     margin: 0;

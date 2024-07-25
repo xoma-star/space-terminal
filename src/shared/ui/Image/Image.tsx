@@ -1,5 +1,5 @@
 import {ImgHTMLAttributes} from 'react';
-import classNames from '@/shared/lib/classNames';
+import clsx from 'clsx';
 
 interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 
@@ -13,7 +13,7 @@ function Image(props: ImageProps) {
   return (
     <img
       {...restProps}
-      className={classNames(className, 'border-[1px] border-black border-solid')}
+      className={clsx(className, 'border-[0.0625rem] border-black border-solid')}
     />
   );
 }

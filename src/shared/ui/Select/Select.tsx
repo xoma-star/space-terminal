@@ -1,6 +1,6 @@
 import {HTMLAttributes} from 'react';
-import classNames from '@/shared/lib/classNames';
 import css from './Select.module.css';
+import clsx from 'clsx';
 
 interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
 }
@@ -15,7 +15,7 @@ function Select(props: SelectProps) {
   return (
     <select
       {...restProps}
-      className={classNames(className, css.select, 'appearance-none relative outline-none box-border')}
+      className={clsx(className, css.select, 'appearance-none relative outline-none box-border')}
     >
       {children}
     </select>

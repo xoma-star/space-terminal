@@ -1,7 +1,7 @@
 import css from './Taskbar.module.css';
-import classNames from '@/shared/lib/classNames';
 import useStore from '@/shared/store';
 import Button from '@/shared/ui/Button/Button';
+import clsx from 'clsx';
 
 export default function Taskbar() {
   const {
@@ -12,7 +12,7 @@ export default function Taskbar() {
   } = useStore();
 
   return (
-    <div className={classNames(css.taskbar, 'fixed bottom-0 left-0 w-full flex items-center p-2 box-border')}>
+    <div className={clsx(css.taskbar, 'fixed bottom-0 left-0 w-full flex items-center p-2xs box-border')}>
       {windows.map((x) => {
         const {
           icon,
@@ -22,8 +22,8 @@ export default function Taskbar() {
         return (
           <Button
             key={id}
-            before={<img width={16} height={16} src={icon} alt={name} />}
-            className={classNames(css.button, activeWindow === id && css.active)}
+            before={<img className={css.taskbarImage} src={icon} alt={name} />}
+            className={clsx(css.button, activeWindow === id && css.active)}
             onClick={() => (id !== activeWindow
                 ? restoreWindow(id)
                 : minifyWindow(id)

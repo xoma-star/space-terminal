@@ -1,6 +1,6 @@
 .desktopIcon {
-    width: 75px;
-    height: 75px;
+    width: 4.6875rem;
+    height: 4.6875rem;
     touch-action: none;
     cursor: default;
     user-select: none;
@@ -8,14 +8,14 @@
 }
 
 .desktopIcon .iconWrapper {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     position: relative;
 }
 
 .desktopIcon .iconWrapper img {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .desktopIcon.active .iconWrapper .selectionEffect {
@@ -28,18 +28,18 @@
     left: 0;
     mask-image: var(--mask);
     -webkit-mask-image: var(--mask);
-    -webkit-mask-size: 32px;
+    -webkit-mask-size: 2rem;
 }
 
 .desktopIcon .title {
     background: #008080;
     color: #ffffff;
-    margin-top: 5px;
-    border: 1px solid transparent;
-    line-height: 13px;
+    margin-top: 0.3125rem;
+    border: 0.0625rem solid transparent;
+    line-height: 0.8125rem;
 }
 
 .desktopIcon.active .title {
     background: var(--dialog-blue);
-    border: 1px dotted #ffffff;
+    border: 0.0625rem dotted #ffffff;
 }
