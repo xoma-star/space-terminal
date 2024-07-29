@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",
-    "@xoma_star/shared-stellar-goose": "^0.0.11",
+    "@xoma_star/shared-stellar-goose": "^0.0.10",
     "alea": "^1.0.1",
     "clsx": "^2.1.1",
     "i18next": "^23.11.5",

@@ -5,6 +5,7 @@
     min-height: 0.875rem;
     min-width: 1rem;
     padding: 0;
+    background-size: 0.5rem 0.4375rem;
 }
 
 .button:focus {

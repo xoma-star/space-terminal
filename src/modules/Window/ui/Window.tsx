@@ -1,4 +1,4 @@
-import {CSSProperties, MouseEvent, ReactNode, useMemo} from 'react';
+import {type CSSProperties, type MouseEvent, type ReactNode} from 'react';
 import css from './Window.module.css';
 import MinifyButton from './MinifyButton';
 import CloseButton from './CloseButton';
@@ -48,7 +48,7 @@ export default function Window(props: WindowProps) {
       onClick={() => setActiveWindow(id)}
     >
       <div className={clsx(css.header, 'flex justify-between items-center', active && css.active)}>
-        <div className={clsx(css.caption, 'flex flex-row gap-2xs')}>
+        <div className={clsx(css.caption, 'flex flex-row gap-2xs items-center')}>
           {icon && <img src={icon} alt={name} />}
           <span>{name}</span>
         </div>

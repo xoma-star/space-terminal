@@ -1,6 +1,6 @@
 import css from './Taskbar.module.css';
 import useStore from '@/shared/store';
-import Button from '@/shared/ui/Button/Button';
+import {Button} from '@/shared/ui';
 import clsx from 'clsx';
 
 export default function Taskbar() {
@@ -25,8 +25,8 @@ export default function Taskbar() {
             before={<img className={css.taskbarImage} src={icon} alt={name} />}
             className={clsx(css.button, activeWindow === id && css.active)}
             onClick={() => (id !== activeWindow
-                ? restoreWindow(id)
-                : minifyWindow(id)
+              ? restoreWindow(id)
+              : minifyWindow(id)
             )}
           >
             {name}

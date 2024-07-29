@@ -1,4 +1,4 @@
-import {Title, Paragraph} from '@/shared/ui/Typography';
+import {Title, Paragraph} from '@/shared/ui';
 
 export interface ErrorContainerProps {
   message: string;
@@ -12,7 +12,7 @@ export default function ErrorContainer(props: ErrorContainerProps) {
   } = props;
 
   return (
-    <div>
+    <div className="p-xs">
       <Title>{message}</Title>
       <Paragraph>{details}</Paragraph>
     </div>

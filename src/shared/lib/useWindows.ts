@@ -1,7 +1,7 @@
 import useStore from '@/shared/store';
 import {useCallback, createElement} from 'react';
 import {Icon} from '@/shared/constants';
-import ErrorContainer, {type ErrorContainerProps} from '@/shared/ui/Popups/ErrorContainer';
+import {ErrorContainer, type ErrorContainerProps} from '@/shared/ui';
 
 /**
  * хук для взаимодействия с окнами

@@ -10,14 +10,13 @@ function Terminal() {
   const {showError} = useWindows();
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInput(value);
+    setInput(e.target.value);
   };
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    const newMessages = [...messages];
+    const newMessages = [...messages, input];
     try {
       commandHandler(input);
     } catch (e: Error) {
@@ -29,11 +28,13 @@ function Terminal() {
   };
 
   return (
-    <div onClick={() => inputRef.current?.focus()}>
+    <div
+      onClick={() => inputRef.current?.focus()}
+    >
       <form onSubmit={submitHandler}>
         <input ref={inputRef} type="text" className="w-0 absolute" value={input} onChange={changeHandler} />
       </form>
-      <div className="w-full h-full bg-black text-white min-h-72 cursor-default">
+      <div className="w-full h-full bg-black text-white min-h-72 cursor-default cursor-text">
         {[...messages, input].map((x, i) => (
           <div key={i} className="flex flex-row">
             <span className="text-green-500">[root@localhost ~]$</span>

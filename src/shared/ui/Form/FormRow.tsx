@@ -10,6 +10,7 @@ interface BaseFormRowProps {
 
 interface FormRowPropsWithLabel extends BaseFormRowProps {
   label: string;
+  /** айди чего-то, к чему будет привязан лабел */
   htmlFor: string;
 }
 
