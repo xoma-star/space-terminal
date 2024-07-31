@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css';
 import useGalacticMap from './GalacticMap/lib/useGalacticMap';
 import StarPreview from './GalacticMap/ui/StarPreview';
 
-
 function Map() {
   const {
     markers,
