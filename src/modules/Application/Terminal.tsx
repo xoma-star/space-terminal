@@ -21,7 +21,6 @@ function Terminal() {
       commandHandler(input);
     } catch (e: Error) {
       newMessages.push(e.message);
-      showError(e);
     }
     setMessages(newMessages);
     setInput('');

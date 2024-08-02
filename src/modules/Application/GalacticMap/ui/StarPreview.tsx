@@ -2,7 +2,7 @@ import Star from './Star';
 import BlackHole from './BlackHole';
 import {type SystemData, StarType} from '@xoma_star/shared-stellar-goose';
 
-type StarPreviewProps = Partial<SystemData<unknown>>;
+type StarPreviewProps = Partial<SystemData<StarType>>;
 
 /**
  * компонент-вилка, который отображает нужный тип звездной системы

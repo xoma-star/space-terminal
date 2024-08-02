@@ -2,6 +2,9 @@ import useStore from '@/shared/store';
 import {useCallback, createElement} from 'react';
 import {Icon} from '@/shared/constants';
 import {ErrorContainer, type ErrorContainerProps} from '@/shared/ui';
+import {HTTPError} from 'ky';
+
+type ErrorPayload = ErrorContainerProps | Error | HTTPError;
 
 /**
  * хук для взаимодействия с окнами
@@ -17,11 +20,19 @@ export default function useWindows() {
     closeWindow
   } = useStore();
 
-  const showError = useCallback((payload: ErrorContainerProps | Error) => {
+  const showError = useCallback(async (payload: ErrorPayload) => {
     let message: string;
     let details: string | undefined;
 
-    if (payload instanceof Error) {
+    if (payload instanceof HTTPError) {
+      try {
+        const errorResponse = await payload.response.json();
+        message = errorResponse?.name;
+        details = errorResponse?.message;
+      } catch (e) {
+        console.error(e);
+      }
+    } else if (payload instanceof Error) {
       message = payload.message;
       details = payload.stack;
     } else if (typeof payload === 'object') {

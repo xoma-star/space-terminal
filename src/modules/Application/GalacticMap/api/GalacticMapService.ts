@@ -1,8 +1,7 @@
 import ky from 'ky';
 import {SERVER_URL} from '@/shared/constants';
 import type {LatLngBounds} from 'leaflet';
-import type {SystemData} from '@xoma_star/shared-stellar-goose';
-
+import type {StarType, SystemData} from '@xoma_star/shared-stellar-goose';
 /**
  * сервис для запросов, связанных с галактической картой
  */
@@ -12,7 +11,7 @@ export default class GalacticMapService {
    * @param bounds границы обозреваемой на карте области
    * @returns массив звездных систем. если пустой, значит зум слишком маленький
    */
-  static async getChunkPreview(bounds: LatLngBounds): Promise<SystemData[]> {
+  static async getChunkPreview(bounds: LatLngBounds): Promise<SystemData<StarType>[]> {
     return ky.get(`${SERVER_URL}/map/chunkPreview`, {
       searchParams: new URLSearchParams({
         left: bounds.getWest().toString(),
@@ -20,6 +19,6 @@ export default class GalacticMapService {
         right: bounds.getEast().toString(),
         bottom: bounds.getSouth().toString()
       })
-    }).json<SystemData[]>();
+    }).json<SystemData<StarType>[]>();
   }
 }

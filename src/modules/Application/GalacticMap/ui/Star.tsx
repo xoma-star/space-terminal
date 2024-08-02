@@ -7,7 +7,7 @@ import {
 } from '@xoma_star/shared-stellar-goose';
 import BaseStar from './BaseStar';
 
-type StarProps = SystemData<StarType.STAR>;
+type StarProps = Partial<SystemData<StarType.STAR>>;
 
 const STAR_SIZE_BY_LUMINOSITY_CLASS: Record<StarLuminosityClass, number> = {
   [StarLuminosityClass.I]: 64,

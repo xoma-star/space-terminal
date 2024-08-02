@@ -18,18 +18,22 @@ function Map() {
         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         url="http://localhost:3000/map/{z}/{x}/{y}"
       />
-      {markers.map((x, i) => {
+      {markers.map((marker, i) => {
         if (!shouldDisplayStar(i)) {
           return null;
         }
 
-        const html = renderToString(<StarPreview {...x} />);
+        const html = renderToString(<StarPreview {...marker} />);
 
         return (
           <Marker
-            position={[x.y, x.x]}
-            key={x.id}
-            onClick={console.log}
+            position={[marker.y, marker.x]}
+            key={marker.id}
+            eventHandlers={{
+              click: (e) => {
+                console.log('marker clicked', e)
+              }
+            }}
             icon={divIcon({
               className: '',
               html
