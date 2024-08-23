@@ -5,11 +5,14 @@ import {divIcon} from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useGalacticMap from './GalacticMap/lib/useGalacticMap';
 import StarPreview from './GalacticMap/ui/StarPreview';
+import StarInfo from '@/modules/Application/GalacticMap/ui/StarInfo.tsx';
+import {Icon} from '@/shared/constants.ts';
 
 function Map() {
   const {
     markers,
-    shouldDisplayStar
+    shouldDisplayStar,
+    openWindow
   } = useGalacticMap();
 
   return (
@@ -18,8 +21,8 @@ function Map() {
         // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         url="http://localhost:3000/map/{z}/{x}/{y}"
       />
-      {markers.map((marker, i) => {
-        if (!shouldDisplayStar(i)) {
+      {markers.map((marker) => {
+        if (!shouldDisplayStar(marker)) {
           return null;
         }
 
@@ -30,8 +33,13 @@ function Map() {
             position={[marker.y, marker.x]}
             key={marker.id}
             eventHandlers={{
-              click: (e) => {
-                console.log('marker clicked', e)
+              click: () => {
+                openWindow({
+                  name: marker.name,
+                  content: <StarInfo {...marker} />,
+                  shouldStretch: false,
+                  icon: Icon.SEARCH_FILE
+                });
               }
             }}
             icon={divIcon({
@@ -51,7 +59,7 @@ function GalacticMap() {
       center={{lng: 54.5, lat: 54.5}}
       zoom={18}
       minZoom={2}
-      className="w-full h-[800px] bg-black"
+      className="w-full h-full bg-black"
       attributionControl={false}
     >
       <Map />

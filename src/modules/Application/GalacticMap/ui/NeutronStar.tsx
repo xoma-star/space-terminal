@@ -1,14 +1,9 @@
-import {BaseProps} from './Star';
 import BaseStar from './BaseStar';
 import css from './Star.module.css';
 
-function NeutronStar(props: BaseProps) {
-  const {
-    onClick
-  } = props;
-
+function NeutronStar() {
   return (
-    <BaseStar className={css.neutronStar} size={32} onClick={onClick} />
+    <BaseStar className={css.neutronStar} size={32} />
   );
 }
 

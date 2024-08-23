@@ -9,7 +9,7 @@ const BLACK_HOLE_SIZE: Record<BlackHoleType, number> = {
   [BlackHoleType.MICRO]: 32
 };
 
-type BlackHoleProps = Partial<SystemData<StarType.BLACK_HOLE>>;
+type BlackHoleProps = SystemData<StarType.BLACK_HOLE>;
 
 function BlackHole(props: BlackHoleProps) {
   const {

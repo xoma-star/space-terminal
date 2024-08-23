@@ -1,36 +1,30 @@
 import Star from './Star';
 import BlackHole from './BlackHole';
-import {type SystemData, StarType} from '@xoma_star/shared-stellar-goose';
+import {StarType, type SystemData} from '@xoma_star/shared-stellar-goose';
+import NeutronStar from './NeutronStar';
+import {createElement, type ReactNode} from 'react';
 
-type StarPreviewProps = Partial<SystemData<StarType>>;
+type StarPreviewProps = SystemData<StarType>;
 
 /**
  * компонент-вилка, который отображает нужный тип звездной системы
  * в зависимости от starType
  */
 export default function StarPreview(props: StarPreviewProps) {
-  const {
-    starType,
-    spectralClass,
-    luminosityClass,
-    blackHoleType
-  } = props;
-
-  switch (starType) {
+  let component: (props: any) => ReactNode;
+  switch (props.starType) {
     case StarType.STAR:
-      return (
-        <Star
-          spectralClass={spectralClass}
-          luminosityClass={luminosityClass}
-        />
-      );
+      component = Star;
+      break;
     case StarType.BLACK_HOLE:
-      return (
-        <BlackHole
-          blackHoleType={blackHoleType}
-        />
-      );
+      component = BlackHole;
+      break;
+    case StarType.NEUTRON_STAR:
+      component = NeutronStar;
+      break;
     default:
-      return null;
+      component = () => null;
   }
+
+  return createElement(component, props);
 }

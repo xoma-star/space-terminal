@@ -2,6 +2,7 @@
     background-color: var(--surface);
     box-shadow: inset -0.0625rem -0.0625rem #0a0a0a, inset 0.0625rem 0.0625rem #dfdfdf, inset -0.125rem -0.125rem grey, inset 0.125rem 0.125rem #fff;
     padding: 0.1875rem;
+    max-height: calc(100% - 1.75rem);
 }
 
 .container.minified {

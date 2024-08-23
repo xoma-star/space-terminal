@@ -37,10 +37,10 @@ export default function Window(props: WindowProps) {
     <div
       className={clsx(
         css.container,
-        'fixed duration-100 max-w-full max-h-full',
+        'fixed duration-100 max-w-full flex flex-col',
         {
           'w-full': shouldStretch === true || shouldStretch?.x,
-          'h-full': shouldStretch === true || shouldStretch?.y
+          'h-full top-0': shouldStretch === true || shouldStretch?.y
         },
         minified && css.minified
       )}
@@ -57,7 +57,7 @@ export default function Window(props: WindowProps) {
           <CloseButton onClick={() => closeWindow(id)} />
         </div>
       </div>
-      <div className={clsx(css.body, 'overflow-auto relative')}>
+      <div className={clsx(css.body, 'overflow-auto relative flex-grow')}>
         {children}
       </div>
     </div>

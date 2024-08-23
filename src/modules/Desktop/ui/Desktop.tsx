@@ -3,6 +3,7 @@ import DesktopIcon from './DesktopIcon';
 import useStore from '@/shared/store';
 import {GalacticMap, Terminal} from '@/modules/Application';
 import {Icon} from '@/shared/constants';
+import type {PopupData} from '@/shared/types.ts';
 
 /** список приложений */
 enum Application {
@@ -20,7 +21,7 @@ interface ApplicationData {
 }
 
 /** информация о приложениях */
-const APPLICATION_DATA: Record<Application, ApplicationData> = {
+const APPLICATION_DATA: Record<Application, ApplicationData & Pick<PopupData, 'shouldStretch'>> = {
   [Application.TERMINAL]: {
     name: 'Терминал',
     icon: Icon.COMPUTER,
@@ -39,7 +40,8 @@ const APPLICATION_DATA: Record<Application, ApplicationData> = {
     icon: Icon.GLOBE_MAP,
     availableOnDesktop: true,
     content: <GalacticMap />,
-    shouldOpenOnce: true
+    shouldOpenOnce: true,
+    shouldStretch: true
   }
 };
 
@@ -48,9 +50,9 @@ export default function Desktop() {
   const {openWindow} = useStore();
 
   const clickHandler = (app: Application) => {
-    const {content, name, icon, shouldOpenOnce} = APPLICATION_DATA[app];
+    const {content, name, icon, shouldOpenOnce, shouldStretch} = APPLICATION_DATA[app];
     return () => {
-      openWindow({icon, name, content}, shouldOpenOnce);
+      openWindow({icon, name, content, shouldStretch}, shouldOpenOnce);
     };
   };
 

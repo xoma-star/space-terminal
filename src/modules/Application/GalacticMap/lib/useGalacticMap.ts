@@ -14,7 +14,7 @@ const MAX_DIFF_WHEN_HIDE = 4;
 export default function useGalacticMap() {
   const [bounds, setBounds] = useState<LatLngBounds | null>(null);
   const [markers, setMarkers] = useState<SystemData<StarType>[]>([]);
-  const {showError} = useWindows();
+  const {showError, openWindow} = useWindows();
   const map = useMap();
 
   const zoom = map.getZoom();
@@ -63,19 +63,21 @@ export default function useGalacticMap() {
     }
   });
 
-  const shouldDisplayStar = useCallback((i: number) => {
+  const shouldDisplayStar = useCallback((marker: SystemData<StarType>) => {
+    const multiple = parseInt(marker.id.slice(-8), 16);
+
     if (zoomDiff > MAX_DIFF_WHEN_HIDE) {
-      if (i % 2 !== 0 || i % 3 !== 0 || i % 5 !== 0) {
+      if (multiple % 2 !== 0 || multiple % 3 !== 0 || multiple % 5 !== 0) {
         return false;
       }
     }
     if (zoomDiff > MAX_DIFF_WHEN_HIDE - 1) {
-      if (i % 2 !== 0 || i % 3 !== 0) {
+      if (multiple % 2 !== 0 || multiple % 3 !== 0) {
         return false;
       }
     }
     if (zoomDiff > MAX_DIFF_WHEN_HIDE - 2) {
-      if (i % 2 !== 0) {
+      if (multiple % 2 !== 0) {
         return false;
       }
     }
@@ -85,6 +87,7 @@ export default function useGalacticMap() {
 
   return {
     markers: zoomDiff < 5 ? markers : [] as SystemData<StarType>[],
-    shouldDisplayStar
+    shouldDisplayStar,
+    openWindow
   };
 }
