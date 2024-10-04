@@ -28,6 +28,15 @@ module.exports = {
     'consistent-return': 'off',
     'import/extensions': ['warn', 'never'],
     'import/order': 'off',
-    'no-plusplus': 'off'
+    'no-plusplus': 'off',
+    'lines-between-class-members': [
+      'warn',
+      {
+        enforce: [
+          {blankLine: 'always', prev: 'method', next: 'method'},
+          {blankLine: 'always', prev: 'field', next: 'method'}
+        ]
+      }
+    ]
   }
 };
